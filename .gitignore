@@ -8,3 +8,9 @@ target/
 *.ipr
 .idea_modules/
 out/
+
+# Fichiers spécifiques à Eclipse
+.classpath
+.project
+.settings/
+bin/
