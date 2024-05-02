@@ -1,6 +1,6 @@
 services:
   postgres:
-    container_name: postgres
+    container_name: postgres-ecommerce
     image: postgres
     environment:
       POSTGRES_USER: ecommerce
@@ -15,7 +15,7 @@ services:
     restart: unless-stopped
     
   pgadmin:
-    container_name: pgadmin
+    container_name: pgadmin-ecommerce
     image: dpage/pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
