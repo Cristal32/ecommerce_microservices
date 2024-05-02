@@ -7,6 +7,7 @@
   <groupId>com.ecommerce</groupId>
   <artifactId>ecommerceservices</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
 
   <name>ecommerceservices</name>
   <!-- FIXME change it to the project's website -->
@@ -60,4 +61,7 @@
       </plugins>
     </pluginManagement>
   </build>
+  <modules>
+  	<module>client</module>
+  </modules>
 </project>
