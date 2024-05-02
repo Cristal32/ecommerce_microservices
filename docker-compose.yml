@@ -3,7 +3,7 @@ services:
     container_name: postgres
     image: postgres
     environment:
-      POSTGRES_USER: amigoscode
+      POSTGRES_USER: ecommerce
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres
     volumes:
@@ -28,14 +28,14 @@ services:
     networks:
       - postgres
     restart: unless-stopped
-    
-  zipkin:
-    image: openzipkin/zipkin
-    container_name: zipkin
-    ports:
-      - "9411:9411"
-    networks:
-      - spring
+
+  #zipkin:
+   # image: openzipkin/zipkin
+    #container_name: zipkin
+  #  ports:
+   #   - "9411:9411"
+    #networks:
+     # - spring
       
 #  rabbitmq:
 #    image: rabbitmq:3.9.11-management-alpine
