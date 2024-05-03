@@ -59,7 +59,7 @@
   </build>
   <modules>
   	<module>client</module>
-    <module>Order</module>
     <module>product</module>
+    <module>order</module>
   </modules>
 </project>
