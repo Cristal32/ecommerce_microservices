@@ -19,7 +19,6 @@ public class Client {
     private String lastName;
     private String email;
 
-    // Private constructor to prevent direct instantiation
     public Client(Integer id, String firstName, String lastName, String email) {
         this.id = id;
         this.firstName = firstName;
@@ -27,7 +26,6 @@ public class Client {
         this.email = email;
     }
 
-    // Private constructor to prevent direct instantiation
     public Client() {
     }
 
