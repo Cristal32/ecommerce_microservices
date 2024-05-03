@@ -48,6 +48,24 @@ public class Client {
         return email;
     }
 
+    // Setter methods
+
+    public void setId(Integer id) {
+        this.id=id;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName=firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName=lastName;
+    }
+
+    public void setEmail(String email) {
+        this.email=email;
+    }
+
     // toString() method
     @Override
     public String toString() {
