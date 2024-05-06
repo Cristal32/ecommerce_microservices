@@ -41,6 +41,16 @@ public class Order {
 
     public String getStatut(){return this.statut;}
 
+    //Setters
+
+    public void setId(Integer id){this.id = id;}
+
+    public void setDate(Date date){this.date = date;}
+
+    public void setAdresse(String adresse){this.adresse = adresse;}
+
+    public void setStatut(String statut){this.statut = statut;}
+
     //toStringMethod
     @Override
     public String toString() {
