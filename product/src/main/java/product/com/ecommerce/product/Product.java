@@ -1,5 +1,7 @@
 package product.com.ecommerce.product;
 
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+
 import java.io.Serializable;
 
 import javax.persistence.Entity;
