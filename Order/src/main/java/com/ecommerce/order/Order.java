@@ -4,51 +4,53 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "orders")
+@Table(name = "order")
 public class Order {
 
     @Id
-    @SequenceGenerator(
-            name = "order_id_sequence", sequenceName = "order_id_sequence"
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "order_id_sequence"
-    )
-    private Integer id;
+    @SequenceGenerator(name = "order_id_sequence", sequenceName = "order_id_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_id_sequence")
+    private Long id;
+    private Long clientId;
+    private Long productId;
     private Date date;
-    private String adresse;
-    private String statut;
 
-    public Order(){
+    public Order(){}
 
-    }
-
-    public Order(Integer id, Date date, String adresse, String statut){
+    public Order(Long id, Long clientId, Long productId, Date date){
         this.id=id;
         this.date=date;
-        this.adresse=adresse;
-        this.statut=statut;
+        this.clientId = clientId;
+        this.productId = productId;
     }
 
-    //Getters
+    // Getters & setters ---------------------------------------
+    // id
+    public Long getId(){return this.id;}
+    public void setId(Long id){this.id = id;}
+    
+    // clientId
+    public void setClientId(Long clientId){this.clientId = clientId;}
+    public Long getClientId(){return this.clientId;}
+    
+    // productId
+    public void setProductIdId(Long productId){this.productId = productId;}
+    public Long getProductIdId(){return this.productId;}
 
-    public Integer getId(){return this.id;}
-
+    // date
     public Date getDate(){return this.date;}
+    public void setDate(Date date){this.date = date;}
 
-    public String getAdresse(){return this.adresse;}
-
-    public String getStatut(){return this.statut;}
-
-    //toStringMethod
+    // ---------------------------------------
+    
+    // toString method
     @Override
     public String toString() {
         return "Order{" +
                 "id=" + id +
                 ", date='" + date + '\'' +
-                ", adresse='" + adresse + '\'' +
-                ", statut='" + statut + '\'' +
+                ", client id='" + clientId + '\'' +
+                ", product id='" + productId + '\'' +
                 '}';
     }
 
@@ -59,16 +61,25 @@ public class Order {
 
     // Builder class
     public static class Builder {
-        private Integer id;
+        private Long id;
+        private Long clientId;
+        private Long productId;
         private Date date;
-        private String adresse;
-        private String statut;
 
-        private Builder() {
-        }
+        private Builder() {}
 
-        public Builder id(Integer id) {
+        public Builder id(Long id) {
             this.id = id;
+            return this;
+        }
+        
+        public Builder clientId(Long clientId) {
+            this.clientId = clientId;
+            return this;
+        }
+        
+        public Builder statut(Long productId) {
+            this.productId = productId;
             return this;
         }
 
@@ -77,18 +88,8 @@ public class Order {
             return this;
         }
 
-        public Builder adresse(String adresse) {
-            this.adresse = adresse;
-            return this;
-        }
-
-        public Builder statut(String statut) {
-            this.statut = statut;
-            return this;
-        }
-
         public Order build() {
-            return new Order(id, date, adresse, statut);
+            return new Order(id, clientId, productId, date);
         }
     }
 

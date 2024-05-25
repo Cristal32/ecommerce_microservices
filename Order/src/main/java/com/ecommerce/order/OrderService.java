@@ -1,19 +1,11 @@
 package com.ecommerce.order;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-@Service
-public record OrderService(OrderRepository orderRepository) {
-    public void registerOrder(OrderRegistrationRequest request) {
-        Order order = Order.builder()
-                .date(request.date())
-                .adresse(request.adresse())
-                .statut(request.statut())
-                .build();
-
-        // todo: check if email is valid
-        // todo: check if email not taken
-        // todo: store client in db
-        orderRepository.save(order);
-    }
+public interface OrderService {
+	public List<Order> getAllOrders();
+	public Order findOrderById(Long orderId);
+	public List<Order> findOrdersByClient(Long clientId);
+	public Order registerOrder(Order order);
+	public void cancelOrder(Long orderId);
 }
