@@ -70,5 +70,6 @@
     <module>product</module>
     <module>order</module>
     <module>eureka-server</module>
+    <module>gateway</module>
   </modules>
 </project>
