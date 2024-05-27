@@ -1,14 +1,11 @@
 package product.com.ecommerce.product;
 
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import product.com.ecommerce.product.model.Category;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 
 @Entity
 public class Product implements Serializable {
@@ -20,28 +17,33 @@ public class Product implements Serializable {
 	@Id
     @SequenceGenerator( name = "product_id_sequence", sequenceName = "product_id_sequence" )
     @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "product_id_sequence" )
-    private int id;
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CategoryId")
+    private Category category;
     private String name;
     private String description;
-    private String image;
+    private byte[] image;
     private float price;
 
     public Product() {
     }
 
-    public Product(int id, String name, String description, String image, float price) {
+    public Product(Long id, Category category, String name, String description, byte[] image, float price) {
         this.id = id;
+        this.category = category;
         this.name = name;
         this.description = description;
         this.image = image;
         this.price = price;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -61,11 +63,11 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-    public String getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 
@@ -77,13 +79,20 @@ public class Product implements Serializable {
         this.price = price;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategoryId(Category category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", image='" + image + '\'' +
                 ", price=" + price +
                 '}';
     }
@@ -93,16 +102,17 @@ public class Product implements Serializable {
     }
     
     public static class ProductBuilder {
-        private int id;
+        private Long id;
+        private Category category;
         private String name;
         private String description;
-        private String image;
+        private byte[] image;
         private float price;
 
         private ProductBuilder() {
         }
 
-        public ProductBuilder id(int id) {
+        public ProductBuilder id(Long id) {
             this.id = id;
             return this;
         }
@@ -117,7 +127,7 @@ public class Product implements Serializable {
             return this;
         }
 
-        public ProductBuilder image(String image) {
+        public ProductBuilder image(byte[] image) {
             this.image = image;
             return this;
         }
@@ -127,8 +137,13 @@ public class Product implements Serializable {
             return this;
         }
 
+        public ProductBuilder category(Category category) {
+            this.category = category;
+            return this;
+        }
+
         public Product build() {
-            return new Product(id, name, description, image, price);
+            return new Product(id,category, name, description, image, price);
         }
     }
 }

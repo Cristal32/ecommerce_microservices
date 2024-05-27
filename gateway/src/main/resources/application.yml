@@ -27,7 +27,7 @@ spring:
           uri: http://localhost:8080
           predicates:
             - Path=/api/client/**
-        - id: blog
+        - id: order
           uri: http://localhost:8081
           predicates:
             - Path=/api/order/**

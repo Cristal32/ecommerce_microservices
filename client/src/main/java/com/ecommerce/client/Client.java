@@ -14,12 +14,12 @@ public class Client {
             strategy = GenerationType.SEQUENCE,
             generator = "client_id_sequence"
     )
-    private Integer id;
+    private Long id;
     private String firstName;
     private String lastName;
     private String email;
 
-    public Client(Integer id, String firstName, String lastName, String email) {
+    public Client(Long id, String firstName, String lastName, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -32,7 +32,7 @@ public class Client {
 
 
     // Getter methods
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -50,7 +50,7 @@ public class Client {
 
     // Setter methods
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id=id;
     }
 
@@ -84,7 +84,7 @@ public class Client {
 
     // Builder class
     public static class Builder {
-        private Integer id;
+        private Long id;
         private String firstName;
         private String lastName;
         private String email;
@@ -92,7 +92,7 @@ public class Client {
         private Builder() {
         }
 
-        public Builder id(Integer id) {
+        public Builder id(Long id) {
             this.id = id;
             return this;
         }

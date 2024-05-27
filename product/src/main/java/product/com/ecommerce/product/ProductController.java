@@ -1,5 +1,6 @@
 package product.com.ecommerce.product;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import product.com.ecommerce.product.model.Category;
 
 
 @RestController
@@ -39,31 +40,35 @@ public class ProductController {
 	}
 	
 	@GetMapping("/getId/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable("id") int id){
+    public ResponseEntity<Product> getProductById(@PathVariable("id") Long id){
         Product product = productService.findProductById(id);
         return ResponseEntity.ok(product);
     }
+
+	@GetMapping("/getCategory/{category}")
+	public ResponseEntity<List<Product>> getProductByCategory(@PathVariable("category") Category category){
+		List<Product> products = productService.findProductByCategory(category);
+		return ResponseEntity.ok(products);
+	}
 	
 	// ================================= POST Mapping =================================
 	
-	@PostMapping("/add")
-    public ResponseEntity<Product> addProduct(@RequestBody Product product){
-        Product newProduct = productService.addProduct(product);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newProduct);
+	@PostMapping("new")
+	public Product registerProduct(@RequestBody RegisterProductRequest registerProductRequest) throws IOException {
+        return productService.registerProduct(registerProductRequest);
     }
 	
 	// ================================= PUT Mapping =================================
 	
 	@PutMapping("/update")
-    public ResponseEntity<Product> updateProduct(@RequestBody Product product){
-        Product updatedProduct = productService.updateProduct(product);
-        return ResponseEntity.ok(updatedProduct);
-    }
+	public Product updateProduct(@RequestBody RegisterProductRequest registerProductRequest) throws IOException {
+		return productService.registerProduct(registerProductRequest);
+	}
 	
 	// ================================= DELETE Mapping =================================
 	@Transactional
 	@DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteProduct(@PathVariable("id") int id){
+    public ResponseEntity<?> deleteProduct(@PathVariable("id") Long id){
         productService.deleteProduct(id);
         return ResponseEntity.ok().build();
     }
