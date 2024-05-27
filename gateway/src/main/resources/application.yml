@@ -24,14 +24,14 @@ spring:
           enabled: true
       routes:
         - id: client
-          uri: http://client:8080
+          uri: http://localhost:8080
           predicates:
-            - Path=/api/clients/**
+            - Path=/api/client/**
         - id: blog
-          uri: http://order:8081
+          uri: http://localhost:8081
           predicates:
             - Path=/api/order/**
         - id: product
-          uri: http://product:8082
+          uri: http://localhost:8082
           predicates:
             - Path=/api/product/**
