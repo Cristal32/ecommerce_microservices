@@ -12,4 +12,6 @@ public interface ProductService {
     public Product registerProduct(RegisterProductRequest request) throws IOException;
     Product updateProduct(Product product);
     void deleteProduct(Long id);
+
+    void loadProductDataFromCSV();
 }

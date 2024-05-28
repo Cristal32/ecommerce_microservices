@@ -66,10 +66,9 @@ public class ProductController {
 	}
 	
 	// ================================= DELETE Mapping =================================
-	@Transactional
 	@DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteProduct(@PathVariable("id") Long id){
+    public ResponseEntity<String> deleteProduct(@PathVariable("id") Long id){
         productService.deleteProduct(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("Product deleted successfully!");
     }
 }

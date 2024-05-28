@@ -1,9 +1,13 @@
 package product.com.ecommerce.product;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.List;
 
+import com.opencsv.CSVReader;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import product.com.ecommerce.product.model.Category;
 
@@ -43,7 +47,36 @@ public class ProductServiceImpl implements ProductService {
                 .build();
         return productDao.saveAndFlush(product);
     }
-    
+
+    // ---------------------------- getImage ----------------------------
+
+    public byte[] getImage(String url) throws IOException{
+        URL imageUrl = new URL(url);
+        return imageUrl.openStream().readAllBytes();
+    }
+
+    // ---------------------------- load data from CSV ----------------------------
+
+    public void loadProductDataFromCSV(){
+        ClassPathResource resource = new ClassPathResource("products.csv");
+        try (CSVReader reader = new CSVReader(new InputStreamReader(resource.getInputStream()))){
+            String[] lineInArray;
+            reader.readNext();
+            while ((lineInArray = reader.readNext()) != null){
+                Product product = Product.builder()
+                        .name(lineInArray[2])
+                        .image(getImage(lineInArray[4]))
+                        .price(Float.parseFloat(lineInArray[5]))
+                        .description(lineInArray[3])
+                        .build();
+                productDao.save(product);
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     // ---------------------------- update a product ----------------------------
     @Override
     public Product updateProduct(Product product) {
