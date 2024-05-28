@@ -7,13 +7,7 @@ import javax.persistence.*;
 public class Client {
 
     @Id
-    @SequenceGenerator(
-            name = "client_id_sequence", sequenceName = "client_id_sequence"
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "client_id_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstName;
     private String lastName;

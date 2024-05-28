@@ -53,6 +53,7 @@ public class ProductServiceImpl implements ProductService {
                 .image(request.image().getBytes())
                 .description(request.description())
                 .price(request.price())
+                .category(request.category())
                 .build();
         return productDao.saveAndFlush(product);
     }

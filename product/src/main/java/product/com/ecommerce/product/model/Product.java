@@ -13,8 +13,7 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = -2813298681406457792L;
 	
 	@Id
-    @SequenceGenerator( name = "product_id_sequence", sequenceName = "product_id_sequence" )
-    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "product_id_sequence" )
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)

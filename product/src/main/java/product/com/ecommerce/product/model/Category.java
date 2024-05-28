@@ -2,15 +2,19 @@ package product.com.ecommerce.product.model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class Category {
     @Id
-    @SequenceGenerator( name = "product_id_sequence", sequenceName = "product_id_sequence" )
-    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "product_id_sequence" )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
     private String description;
+    
+    public Category() {}
 
     public Category(Long id, String name, String description) {
         this.id = id;
