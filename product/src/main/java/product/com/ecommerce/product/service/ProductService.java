@@ -1,6 +1,8 @@
-package product.com.ecommerce.product;
+package product.com.ecommerce.product.service;
 
+import product.com.ecommerce.product.RegisterProductRequest;
 import product.com.ecommerce.product.model.Category;
+import product.com.ecommerce.product.model.Product;
 
 import java.io.IOException;
 import java.util.List;

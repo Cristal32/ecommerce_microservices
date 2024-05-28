@@ -14,26 +14,31 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private RestTemplate restTemplate;
 	
+	// ---------------------------- get all orders ----------------------------
 	@Override
 	public List<Order> getAllOrders() {
 		return orderDao.findAll();
 	}
 	
+	// ---------------------------- find an order by id ----------------------------
 	@Override
-	public Order findOrderById(Long orderId) {
-		return orderDao.findOrderById(orderId).orElse(null);
+	public Order findOrderById(Long id) {
+		return orderDao.findOrderById(id).orElse(null);
 	}
 	
+	// ---------------------------- find orders by client ----------------------------
 	@Override
 	public List<Order> findOrdersByClient(Long clientId) {
 		return orderDao.findOrdersByClientId(clientId).orElse(null);
 	}
 	
+	// ---------------------------- add an order ----------------------------
 	@Override
 	public Order registerOrder(Order order) {
 		return orderDao.save(order);
 	}
 	
+	// ---------------------------- cancel an order ----------------------------
 	@Override
 	public void cancelOrder(Long orderId) {
 		orderDao.deleteById(orderId);

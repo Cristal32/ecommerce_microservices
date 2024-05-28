@@ -1,4 +1,4 @@
-package product.com.ecommerce.product;
+package product.com.ecommerce.product.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,7 +16,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import product.com.ecommerce.product.RegisterProductRequest;
 import product.com.ecommerce.product.model.Category;
+import product.com.ecommerce.product.model.Product;
+import product.com.ecommerce.product.service.ProductService;
 
 
 @RestController

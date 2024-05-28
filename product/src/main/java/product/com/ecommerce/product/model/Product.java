@@ -1,7 +1,6 @@
-package product.com.ecommerce.product;
+package product.com.ecommerce.product.model;
 
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import product.com.ecommerce.product.model.Category;
 
 import java.io.Serializable;
 

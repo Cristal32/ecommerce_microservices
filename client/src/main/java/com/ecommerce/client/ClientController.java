@@ -2,7 +2,6 @@ package com.ecommerce.client;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,24 +15,22 @@ public class ClientController {
 	@Autowired
 	private ClientService clientService;
 	
-	private static final Logger logger = Logger.getLogger(ClientController.class.getName());
-
 	// ============================= GET mapping =============================	
-	@GetMapping("all")
+	@GetMapping("getAll")
 	public List<Client> getAllClients() {return clientService.getAllClients();}
 
-	@GetMapping("client/{id}")
+	@GetMapping("find/{id}")
 	public Client getClient(@PathVariable("id") Integer id) {return clientService.getClient(id);}
 
 	// ============================= POST mapping =============================	
-	@PostMapping("new")
+	@PostMapping("add")
 	public Client registerClient(@RequestBody RegisterClientRequest registerClientRequest) throws IOException {
         return clientService.registerClient(registerClientRequest);
     }
 	
 	// ============================= PUT mapping =============================	
 	@PutMapping("update/{id}")
-	public Client updateClient(@PathVariable("id") Integer id, @RequestBody UpdateClientRequest updateClientRequest) {
+	public Client updateClient(@PathVariable("id") Integer id, @RequestBody RegisterClientRequest updateClientRequest) {
 		try {
 			return clientService.updateClient(id, updateClientRequest);
 		} catch (IOException e) {

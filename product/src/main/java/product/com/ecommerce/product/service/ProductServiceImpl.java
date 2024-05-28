@@ -1,11 +1,15 @@
-package product.com.ecommerce.product;
+package product.com.ecommerce.product.service;
 
 import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import product.com.ecommerce.product.RegisterProductRequest;
 import product.com.ecommerce.product.model.Category;
+import product.com.ecommerce.product.model.Product;
+import product.com.ecommerce.product.repository.ProductDao;
 
 @Service
 public class ProductServiceImpl implements ProductService {
