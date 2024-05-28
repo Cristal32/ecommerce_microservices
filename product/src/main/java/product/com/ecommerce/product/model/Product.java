@@ -1,12 +1,13 @@
-package product.com.ecommerce.product;
+package product.com.ecommerce.product.model;
 
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import product.com.ecommerce.product.model.Category;
 
 import java.io.Serializable;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class Product implements Serializable {
 	/**
@@ -15,8 +16,7 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = -2813298681406457792L;
 	
 	@Id
-    @SequenceGenerator( name = "product_id_sequence", sequenceName = "product_id_sequence" )
-    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "product_id_sequence" )
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -83,7 +83,7 @@ public class Product implements Serializable {
         return category;
     }
 
-    public void setCategoryId(Category category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 

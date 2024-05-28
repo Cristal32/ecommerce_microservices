@@ -1,4 +1,4 @@
-package product.com.ecommerce.product;
+package product.com.ecommerce.product.service;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -6,10 +6,17 @@ import java.net.URL;
 import java.util.List;
 
 import com.opencsv.CSVReader;
+import java.util.Optional;
+
+import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
+
+import product.com.ecommerce.product.RegisterProductRequest;
 import product.com.ecommerce.product.model.Category;
+import product.com.ecommerce.product.model.Product;
+import product.com.ecommerce.product.repository.ProductDao;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -35,6 +42,12 @@ public class ProductServiceImpl implements ProductService {
         return productDao.findProductByCategory(category).orElse(null);
     }
     
+ // ---------------------------- get a product's image ----------------------------
+    public byte[] getProductImageById(Long id) {
+        Product product = productDao.findById(id).orElseThrow(() -> new EntityNotFoundException("Product with id " + id + " not found"));
+        return product.getImage();
+    }
+    
     // ---------------------------- add a product ----------------------------
     
     @Override
@@ -44,6 +57,7 @@ public class ProductServiceImpl implements ProductService {
                 .image(request.image().getBytes())
                 .description(request.description())
                 .price(request.price())
+                .category(request.category())
                 .build();
         return productDao.saveAndFlush(product);
     }
@@ -79,8 +93,32 @@ public class ProductServiceImpl implements ProductService {
 
     // ---------------------------- update a product ----------------------------
     @Override
-    public Product updateProduct(Product product) {
-        return productDao.save(product);
+    public Product updateProduct(Long id, RegisterProductRequest request) {
+        Optional<Product> existingProductOptional = productDao.findById(id);
+        
+        if (existingProductOptional.isPresent()) {
+        	
+            Product product = existingProductOptional.get();
+            if (request.name() != null) { 
+            	product.setName(request.name());}
+            
+            if (request.description() != null) {product.setDescription(request.description());}
+            
+            if (request.image() != null && !request.image().isEmpty()) {
+                try {
+					product.setImage(request.image().getBytes());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+            }
+            
+            if (request.price() != null) {product.setPrice(request.price());}
+            if (request.category() != null) {product.setCategory(request.category());}
+            
+            return productDao.saveAndFlush(product);
+        } else {
+            throw new EntityNotFoundException("Product with id " + id + " not found");
+        }
     }
     
     // ---------------------------- delete a product ----------------------------

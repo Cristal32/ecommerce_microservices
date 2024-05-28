@@ -34,7 +34,7 @@ public class ClientService {
 		return clientRepository.saveAndFlush(client);
 	}
 
-	public Client updateClient(Integer id, UpdateClientRequest request) throws IOException {
+	public Client updateClient(Integer id, RegisterClientRequest request) throws IOException {
 		Client client = clientRepository.findById(id).get();
 		client.setFirstName(request.firstName());
 		client.setLastName(request.lastName());
