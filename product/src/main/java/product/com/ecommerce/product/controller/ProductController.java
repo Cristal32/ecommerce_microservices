@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import product.com.ecommerce.product.RegisterProductRequest;
 import product.com.ecommerce.product.model.Category;
 import product.com.ecommerce.product.model.Product;
+import product.com.ecommerce.product.service.CategoryService;
 import product.com.ecommerce.product.service.ProductService;
 
 
@@ -32,9 +33,13 @@ public class ProductController {
 	@Autowired
 	private final ProductService productService;
 	
+	@Autowired
+	private final CategoryService categoryService;
+	
 	// Constructor
-	public ProductController(ProductService productService) {
+	public ProductController(ProductService productService, CategoryService categoryService) {
 		this.productService = productService;
+		this.categoryService = categoryService;
 	}
 	
 	// ================================= GET Mapping =================================
@@ -51,8 +56,9 @@ public class ProductController {
         return ResponseEntity.ok(product);
     }
 
-	@GetMapping("/getByCategory/{category}")
-	public ResponseEntity<List<Product>> getProductByCategory(@PathVariable("category") Category category){
+	@GetMapping("/getByCategory/{categoryId}")
+	public ResponseEntity<List<Product>> getProductByCategory(@PathVariable("categoryId") Long categoryId){
+		Category category = categoryService.findCategoryById(categoryId);
 		List<Product> products = productService.findProductByCategory(category);
 		return ResponseEntity.ok(products);
 	}

@@ -1,4 +1,4 @@
-package com.ecommerce.order;
+package com.ecommerce.order.model;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -33,8 +33,8 @@ public class Order {
     public Long getClientId(){return this.clientId;}
     
     // productId
-    public void setProductIdId(Long productId){this.productId = productId;}
-    public Long getProductIdId(){return this.productId;}
+    public void setProductId(Long productId){this.productId = productId;}
+    public Long getProductId(){return this.productId;}
 
     // date
     public Date getDate(){return this.date;}

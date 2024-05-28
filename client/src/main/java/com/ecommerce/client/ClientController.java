@@ -19,7 +19,7 @@ public class ClientController {
 	@GetMapping("getAll")
 	public List<Client> getAllClients() {return clientService.getAllClients();}
 
-	@GetMapping("find/{id}")
+	@GetMapping("getById/{id}")
 	public Client getClient(@PathVariable("id") Integer id) {return clientService.getClient(id);}
 
 	// ============================= POST mapping =============================	
