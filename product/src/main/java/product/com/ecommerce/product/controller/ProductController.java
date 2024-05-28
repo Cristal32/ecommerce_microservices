@@ -6,14 +6,16 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,31 +45,44 @@ public class ProductController {
 		return new ResponseEntity<>(products, HttpStatus.OK);
 	}
 	
-	@GetMapping("/getId/{id}")
+	@GetMapping("/getById/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable("id") Long id){
         Product product = productService.findProductById(id);
         return ResponseEntity.ok(product);
     }
 
-	@GetMapping("/getCategory/{category}")
+	@GetMapping("/getByCategory/{category}")
 	public ResponseEntity<List<Product>> getProductByCategory(@PathVariable("category") Category category){
 		List<Product> products = productService.findProductByCategory(category);
 		return ResponseEntity.ok(products);
 	}
 	
+	@GetMapping("/getImage/{id}")
+    public ResponseEntity<byte[]> getProductImage(@PathVariable Long id) {
+        byte[] imageBytes = productService.getProductImageById(id);
+
+        if (imageBytes != null) {
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.IMAGE_JPEG);  // Or the appropriate image type
+            return new ResponseEntity<>(imageBytes, headers, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+	
 	// ================================= POST Mapping =================================
 	
-	@PostMapping("new")
-	public Product registerProduct(@RequestBody RegisterProductRequest registerProductRequest) throws IOException {
+	@PostMapping("add")
+	public Product registerProduct(@ModelAttribute RegisterProductRequest registerProductRequest) throws IOException {
         return productService.registerProduct(registerProductRequest);
     }
 	
 	// ================================= PUT Mapping =================================
 	
-	@PutMapping("/update")
-	public Product updateProduct(@RequestBody RegisterProductRequest registerProductRequest) throws IOException {
-		return productService.registerProduct(registerProductRequest);
-	}
+	@PutMapping("/update/{id}")
+    public Product updateProduct(@PathVariable Long id, @ModelAttribute RegisterProductRequest updateProductRequest) throws IOException {
+        return productService.updateProduct(id, updateProductRequest);
+    }
 	
 	// ================================= DELETE Mapping =================================
 	@Transactional

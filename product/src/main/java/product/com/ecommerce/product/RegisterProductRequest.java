@@ -8,7 +8,7 @@ public record RegisterProductRequest (Long id,
         String name,
         String description,
         MultipartFile image,
-        float price) {
+        Float price) {
 }
 
 

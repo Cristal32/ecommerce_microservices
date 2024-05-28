@@ -10,8 +10,9 @@ import java.util.List;
 public interface ProductService {
 	List<Product> getAllProducts();
     Product findProductById(Long id);
+    public byte[] getProductImageById(Long id);
     List<Product> findProductByCategory(Category category);
     public Product registerProduct(RegisterProductRequest request) throws IOException;
-    Product updateProduct(Product product);
+    public Product updateProduct(Long id, RegisterProductRequest request);
     void deleteProduct(Long id);
 }

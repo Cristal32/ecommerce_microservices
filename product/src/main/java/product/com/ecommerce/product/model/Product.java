@@ -1,6 +1,5 @@
 package product.com.ecommerce.product.model;
 
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 import java.io.Serializable;
 
@@ -82,7 +81,7 @@ public class Product implements Serializable {
         return category;
     }
 
-    public void setCategoryId(Category category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
