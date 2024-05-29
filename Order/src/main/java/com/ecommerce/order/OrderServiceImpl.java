@@ -9,9 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.ecommerce.order.model.Client;
+import com.ecommerce.order.model.ClientDTO;
 import com.ecommerce.order.model.Order;
-import com.ecommerce.order.model.Product;
+import com.ecommerce.order.model.ProductDTO;
+
 @Service
 public class OrderServiceImpl implements OrderService {
 	
@@ -50,13 +51,13 @@ public class OrderServiceImpl implements OrderService {
 	
 	public Order registerOrder(Order order) {
         // Check if the client exists
-        ResponseEntity<Client> clientResponse = restTemplate.getForEntity(CLIENT_SERVICE_URL, Client.class, order.getClientId());
+        ResponseEntity<ClientDTO> clientResponse = restTemplate.getForEntity(CLIENT_SERVICE_URL, ClientDTO.class, order.getClientId());
         if (clientResponse.getStatusCode() != HttpStatus.OK) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Client does not exist");
         }
 
         // Check if the product exists
-        ResponseEntity<Product> productResponse = restTemplate.getForEntity(PRODUCT_SERVICE_URL, Product.class, order.getProductId());
+        ResponseEntity<ProductDTO> productResponse = restTemplate.getForEntity(PRODUCT_SERVICE_URL, ProductDTO.class, order.getProductId());
         if (productResponse.getStatusCode() != HttpStatus.OK) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product does not exist");
         }

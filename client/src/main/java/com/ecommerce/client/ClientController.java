@@ -20,7 +20,7 @@ public class ClientController {
 	public List<Client> getAllClients() {return clientService.getAllClients();}
 
 	@GetMapping("getById/{id}")
-	public Client getClient(@PathVariable("id") Integer id) {return clientService.getClient(id);}
+	public Client getClient(@PathVariable("id") Long id) {return clientService.getClient(id);}
 
 	// ============================= POST mapping =============================	
 	@PostMapping("add")
@@ -30,7 +30,7 @@ public class ClientController {
 	
 	// ============================= PUT mapping =============================	
 	@PutMapping("update/{id}")
-	public Client updateClient(@PathVariable("id") Integer id, @RequestBody RegisterClientRequest updateClientRequest) {
+	public Client updateClient(@PathVariable("id") Long id, @RequestBody RegisterClientRequest updateClientRequest) {
 		try {
 			return clientService.updateClient(id, updateClientRequest);
 		} catch (IOException e) {
@@ -40,7 +40,7 @@ public class ClientController {
 
 	// ============================= DELETE mapping =============================
 	@DeleteMapping("delete/{id}")
-	public ResponseEntity<String> deleteClient(@PathVariable("id") Integer id) {
+	public ResponseEntity<String> deleteClient(@PathVariable("id") Long id) {
 		clientService.deleteClient(id);
 		return ResponseEntity.ok("Client deleted successfully!");
 	}

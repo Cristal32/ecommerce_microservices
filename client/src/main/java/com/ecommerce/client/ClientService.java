@@ -17,7 +17,7 @@ public class ClientService {
 		return clientRepository.findAll();
 	}
 
-	public Client getClient(Integer id){
+	public Client getClient(Long id){
 		return clientRepository.findById(id).get();
 	}
 
@@ -34,7 +34,7 @@ public class ClientService {
 		return clientRepository.saveAndFlush(client);
 	}
 
-	public Client updateClient(Integer id, RegisterClientRequest request) throws IOException {
+	public Client updateClient(Long id, RegisterClientRequest request) throws IOException {
 		Client client = clientRepository.findById(id).get();
 		client.setFirstName(request.firstName());
 		client.setLastName(request.lastName());
@@ -42,7 +42,7 @@ public class ClientService {
 		return clientRepository.save(client);
 	}
 
-	public void deleteClient(Integer id) {
+	public void deleteClient(Long id) {
 		clientRepository.deleteById(id);
 	}
 	

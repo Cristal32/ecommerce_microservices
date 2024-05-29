@@ -1,19 +1,19 @@
 package com.ecommerce.order.model;
 
-public class Client {
+public class ClientDTO {
 	private Long id;
     private String firstName;
     private String lastName;
     private String email;
 
-    public Client(Long id, String firstName, String lastName, String email) {
+    public ClientDTO(Long id, String firstName, String lastName, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
 
-    public Client() {
+    public ClientDTO() {
     }
 
     // Getter methods

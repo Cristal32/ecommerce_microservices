@@ -1,18 +1,18 @@
 package com.ecommerce.order.model;
 
 
-public class Product {
+public class ProductDTO {
 	private Long id;
-    private Long category;
+    private CategoryDTO category;
     private String name;
     private String description;
     private byte[] image;
     private float price;
 
-    public Product() {
+    public ProductDTO() {
     }
 
-    public Product(Long id, Long category, String name, String description, byte[] image, float price) {
+    public ProductDTO(Long id, CategoryDTO category, String name, String description, byte[] image, float price) {
         this.id = id;
         this.category = category;
         this.name = name;
@@ -61,11 +61,11 @@ public class Product {
         this.price = price;
     }
 
-    public Long getCategory() {
+    public CategoryDTO getCategory() {
         return category;
     }
 
-    public void setCategory(Long category) {
+    public void setCategory(CategoryDTO category) {
         this.category = category;
     }
 }
