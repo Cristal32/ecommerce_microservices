@@ -23,6 +23,7 @@ public class Product implements Serializable {
     @JoinColumn(name = "CategoryId")
     private Category category;
     private String name;
+    //@Column(length = 1500)
     private String description;
     private byte[] image;
     private float price;
