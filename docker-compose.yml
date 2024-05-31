@@ -30,12 +30,14 @@ services:
     restart: unless-stopped
 
   #zipkin:
-   # image: openzipkin/zipkin
-    #container_name: zipkin
-  #  ports:
-   #   - "9411:9411"
-    #networks:
-     # - spring
+  zipkin:
+    container_name: zipkin
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - spring
+    restart: unless-stopped
       
 #  rabbitmq:
 #    image: rabbitmq:3.9.11-management-alpine
@@ -115,8 +117,8 @@ services:
 networks:
   postgres:
     driver: bridge
-#  spring:
-#    driver: bridge
+  spring:
+    driver: bridge
 
 volumes:
   postgres:
