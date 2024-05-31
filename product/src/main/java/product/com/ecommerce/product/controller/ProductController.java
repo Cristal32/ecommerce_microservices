@@ -3,7 +3,6 @@ package product.com.ecommerce.product.controller;
 import java.io.IOException;
 import java.util.List;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import product.com.ecommerce.product.RegisterProductRequest;
+import product.com.ecommerce.product.UpdateProductRequest;
 import product.com.ecommerce.product.model.Category;
 import product.com.ecommerce.product.model.Product;
 import product.com.ecommerce.product.service.CategoryService;
@@ -86,7 +86,7 @@ public class ProductController {
 	// ================================= PUT Mapping =================================
 	
 	@PutMapping("/update/{id}")
-    public Product updateProduct(@PathVariable Long id, @ModelAttribute RegisterProductRequest updateProductRequest) throws IOException {
+    public Product updateProduct(@PathVariable Long id, @ModelAttribute UpdateProductRequest updateProductRequest) throws IOException {
         return productService.updateProduct(id, updateProductRequest);
     }
 	

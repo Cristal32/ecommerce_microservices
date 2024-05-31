@@ -26,19 +26,24 @@ public class Product implements Serializable {
     private String description;
     private byte[] image;
     private float price;
+    private int status; // 0 = available, 1 = sold
 
     public Product() {
     }
 
-    public Product(Long id, Category category, String name, String description, byte[] image, float price) {
+    public Product(Long id, Category category, String name, String description, byte[] image, float price, int status) {
         this.id = id;
         this.category = category;
         this.name = name;
         this.description = description;
         this.image = image;
         this.price = price;
+        this.status = status;
     }
-
+    
+    // Getters & setters ---------------------------------------------------------------------
+    
+    // id
     public Long getId() {
         return id;
     }
@@ -46,7 +51,8 @@ public class Product implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
+    
+    // name
     public String getName() {
         return name;
     }
@@ -54,7 +60,8 @@ public class Product implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
+    
+    // description
     public String getDescription() {
         return description;
     }
@@ -62,7 +69,8 @@ public class Product implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-
+    
+    // image
     public byte[] getImage() {
         return image;
     }
@@ -70,7 +78,8 @@ public class Product implements Serializable {
     public void setImage(byte[] image) {
         this.image = image;
     }
-
+    
+    // price
     public float getPrice() {
         return price;
     }
@@ -78,13 +87,23 @@ public class Product implements Serializable {
     public void setPrice(float price) {
         this.price = price;
     }
-
+    
+    // category
     public Category getCategory() {
         return category;
     }
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+    
+    // status
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     @Override
@@ -94,8 +113,11 @@ public class Product implements Serializable {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
+                ", status=" + status +
                 '}';
     }
+    
+    // ProductBuilder ---------------------------------------------------------------------
     
     public static ProductBuilder builder() {
         return new ProductBuilder();
@@ -108,10 +130,11 @@ public class Product implements Serializable {
         private String description;
         private byte[] image;
         private float price;
+        private int status;
 
-        private ProductBuilder() {
-        }
+        private ProductBuilder() {}
 
+        // Methods
         public ProductBuilder id(Long id) {
             this.id = id;
             return this;
@@ -141,9 +164,14 @@ public class Product implements Serializable {
             this.category = category;
             return this;
         }
+        
+        public ProductBuilder status(int status) {
+            this.status = status;
+            return this;
+        }
 
         public Product build() {
-            return new Product(id,category, name, description, image, price);
+            return new Product(id, category, name, description, image, price, status);
         }
     }
 }
