@@ -71,5 +71,7 @@
     <module>order</module>
     <module>eureka-server</module>
     <module>gateway</module>
+      <module>Auth</module>
+    <module>payment</module>
   </modules>
 </project>
