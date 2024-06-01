@@ -1,8 +1,7 @@
-package com.ecommerce.order.model;
+package com.ecommerce.feignclients.product;
 
 public class CategoryDTO {
 	private Long id;
-
     private String name;
     private String description;
     
@@ -36,5 +35,14 @@ public class CategoryDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }
