@@ -1,10 +1,13 @@
-package com.ecommerce.order.model;
+package com.ecommerce.feignclients.customer;
 
 public class ClientDTO {
 	private Long id;
     private String firstName;
     private String lastName;
     private String email;
+    
+    // Constructors
+    public ClientDTO() {}
 
     public ClientDTO(Long id, String firstName, String lastName, String email) {
         this.id = id;
@@ -13,10 +16,7 @@ public class ClientDTO {
         this.email = email;
     }
 
-    public ClientDTO() {
-    }
-
-    // Getter methods
+    // Getters 
     public Long getId() {
         return id;
     }
@@ -51,4 +51,14 @@ public class ClientDTO {
         this.email=email;
     }
 
+    // toString() method
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
