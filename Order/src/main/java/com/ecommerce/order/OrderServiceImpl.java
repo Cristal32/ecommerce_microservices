@@ -1,29 +1,38 @@
 package com.ecommerce.order;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.server.ResponseStatusException;
 
-import com.ecommerce.order.model.ClientDTO;
+import com.ecommerce.amqp.RabbitMQProducer;
+import com.ecommerce.feignclients.customer.CustomerClient;
+import com.ecommerce.feignclients.notification.NotificationRequest;
+import com.ecommerce.feignclients.order.OrderRequest;
+import com.ecommerce.feignclients.product.ProductClient;
 import com.ecommerce.order.model.Order;
-import com.ecommerce.order.model.ProductDTO;
 
 @Service
 public class OrderServiceImpl implements OrderService {
 	
-	private static final String CLIENT_SERVICE_URL = "http://localhost:8222/api/client/getById/{clientId}";
-    private static final String PRODUCT_SERVICE_URL = "http://localhost:8222/api/product/getById/{productId}";
+//	private static final String CLIENT_SERVICE_URL = "http://localhost:8222/api/client/getById/{clientId}";
+//    private static final String PRODUCT_SERVICE_URL = "http://localhost:8222/api/product/getById/{productId}";
 	
 	@Autowired 
 	private OrderDao orderDao;
 	
+//	@Autowired
+//	private RestTemplate restTemplate;
+	
 	@Autowired
-	private RestTemplate restTemplate;
+    private RabbitMQProducer rabbitMQProducer;
+	
+	@Autowired
+	private ProductClient productClient;
+	
+	@Autowired
+	private CustomerClient customerClient;
 	
 	// ---------------------------- get all orders ----------------------------
 	@Override
@@ -44,27 +53,57 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	// ---------------------------- add an order ----------------------------
+	@Override
+	public Order registerOrder(OrderRequest order) {
+        // Check if the client exists
+		customerClient.getCustomer(order.getClientId());
+
+        // Check if the product exists
+		productClient.getProduct(order.getProductId());
+		
+		// Create order
+        Order orderEntity = orderDao.save(Order.builder()
+        		.id(null)
+                .clientId(order.getClientId())
+                .productId(order.getProductId())
+                .date(LocalDateTime.now())
+                .build());
+		
+		// Create notificationRequest
+        NotificationRequest notificationRequest = NotificationRequest.builder()
+                .clientId(order.getClientId())
+                .clientEmail(order.getClientEmail())
+                .sender("ecommerce")
+                .msg("Your order has been successful.")
+                .build();
+        
+        // Send notification
+        rabbitMQProducer.publish("internal.exchange", "internal.notification.routing-key", notificationRequest);
+        
+        return orderEntity;
+    }
+	
 //	@Override
 //	public Order addOrder(Order order) {
 //		return orderDao.save(order);
 //	}
 	
-	public Order registerOrder(Order order) {
-        // Check if the client exists
-        ResponseEntity<ClientDTO> clientResponse = restTemplate.getForEntity(CLIENT_SERVICE_URL, ClientDTO.class, order.getClientId());
-        if (clientResponse.getStatusCode() != HttpStatus.OK) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Client does not exist");
-        }
-
-        // Check if the product exists
-        ResponseEntity<ProductDTO> productResponse = restTemplate.getForEntity(PRODUCT_SERVICE_URL, ProductDTO.class, order.getProductId());
-        if (productResponse.getStatusCode() != HttpStatus.OK) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product does not exist");
-        }
-
-        // If both client and product exist, save the order
-        return orderDao.save(order);
-    }
+//	public Order registerOrder(Order order) {
+//        // Check if the client exists
+//        ResponseEntity<ClientDTO> clientResponse = restTemplate.getForEntity(CLIENT_SERVICE_URL, ClientDTO.class, order.getClientId());
+//        if (clientResponse.getStatusCode() != HttpStatus.OK) {
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Client does not exist");
+//        }
+//
+//        // Check if the product exists
+//        ResponseEntity<ProductDTO> productResponse = restTemplate.getForEntity(PRODUCT_SERVICE_URL, ProductDTO.class, order.getProductId());
+//        if (productResponse.getStatusCode() != HttpStatus.OK) {
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product does not exist");
+//        }
+//
+//        // If both client and product exist, save the order
+//        return orderDao.save(order);
+//    }
 	
 	// ---------------------------- cancel an order ----------------------------
 	@Override

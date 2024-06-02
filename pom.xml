@@ -52,6 +52,10 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
     </dependency>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-openfeign</artifactId>
+    </dependency>
   </dependencies>
 
   <build>
@@ -71,5 +75,8 @@
     <module>order</module>
     <module>eureka-server</module>
     <module>gateway</module>
+    <module>notification</module>
+    <module>amqp</module>
+    <module>feign-clients</module>
   </modules>
 </project>

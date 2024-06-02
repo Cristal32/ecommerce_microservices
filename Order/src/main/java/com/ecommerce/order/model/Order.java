@@ -1,7 +1,8 @@
 package com.ecommerce.order.model;
 
 import javax.persistence.*;
-import java.util.Date;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "orders")
@@ -12,11 +13,11 @@ public class Order {
     private Long id;
     private Long clientId;
     private Long productId;
-    private Date date;
+    private LocalDateTime date;
 
     public Order(){}
 
-    public Order(Long id, Long clientId, Long productId, Date date){
+    public Order(Long id, Long clientId, Long productId, LocalDateTime date){
         this.id=id;
         this.date=date;
         this.clientId = clientId;
@@ -37,8 +38,8 @@ public class Order {
     public Long getProductId(){return this.productId;}
 
     // date
-    public Date getDate(){return this.date;}
-    public void setDate(Date date){this.date = date;}
+    public LocalDateTime getDate(){return this.date;}
+    public void setDate(LocalDateTime date){this.date = date;}
 
     // ---------------------------------------
     
@@ -63,7 +64,7 @@ public class Order {
         private Long id;
         private Long clientId;
         private Long productId;
-        private Date date;
+        private LocalDateTime date;
 
         private Builder() {}
 
@@ -77,12 +78,12 @@ public class Order {
             return this;
         }
         
-        public Builder statut(Long productId) {
+        public Builder productId(Long productId) {
             this.productId = productId;
             return this;
         }
 
-        public Builder date(Date date) {
+        public Builder date(LocalDateTime date) {
             this.date = date;
             return this;
         }
