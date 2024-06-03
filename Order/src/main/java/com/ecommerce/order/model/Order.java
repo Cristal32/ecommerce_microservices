@@ -14,14 +14,16 @@ public class Order {
     private Long clientId;
     private Long productId;
     private LocalDateTime date;
+    private Integer amount;
 
     public Order(){}
 
-    public Order(Long id, Long clientId, Long productId, LocalDateTime date){
+    public Order(Long id, Long clientId, Long productId, LocalDateTime date, Integer amount){
         this.id=id;
         this.date=date;
         this.clientId = clientId;
         this.productId = productId;
+        this.amount = amount;
     }
 
     // Getters & setters ---------------------------------------
@@ -41,6 +43,11 @@ public class Order {
     public LocalDateTime getDate(){return this.date;}
     public void setDate(LocalDateTime date){this.date = date;}
 
+    // amount
+    public Integer getAmount(){return this.amount;}
+    public void setAmount(Integer amount){this.amount = amount;}
+
+
     // ---------------------------------------
     
     // toString method
@@ -51,6 +58,7 @@ public class Order {
                 ", date='" + date + '\'' +
                 ", client id='" + clientId + '\'' +
                 ", product id='" + productId + '\'' +
+                ", amount =" + amount +
                 '}';
     }
 
@@ -65,6 +73,7 @@ public class Order {
         private Long clientId;
         private Long productId;
         private LocalDateTime date;
+        private Integer amount;
 
         private Builder() {}
 
@@ -88,8 +97,13 @@ public class Order {
             return this;
         }
 
+        public Builder amount(Integer amount){
+            this.amount = amount;
+            return this;
+        }
+
         public Order build() {
-            return new Order(id, clientId, productId, date);
+            return new Order(id, clientId, productId, date, amount);
         }
     }
 

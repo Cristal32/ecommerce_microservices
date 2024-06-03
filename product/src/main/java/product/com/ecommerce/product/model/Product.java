@@ -23,22 +23,23 @@ public class Product implements Serializable {
     @JoinColumn(name = "CategoryId")
     private Category category;
     private String name;
-    //@Column(length = 1500)
     private String description;
     private byte[] image;
     private float price;
+    private Integer stockQuantity;
     private int status; // 0 = available, 1 = sold
 
     public Product() {
     }
 
-    public Product(Long id, Category category, String name, String description, byte[] image, float price, int status) {
+    public Product(Long id, Category category, String name, String description, byte[] image, float price, Integer stockQuantity, int status) {
         this.id = id;
         this.category = category;
         this.name = name;
         this.description = description;
         this.image = image;
         this.price = price;
+        this.stockQuantity = stockQuantity;
         this.status = status;
     }
     
@@ -88,7 +89,17 @@ public class Product implements Serializable {
     public void setPrice(float price) {
         this.price = price;
     }
-    
+
+    //stockQuantity
+    public Integer getStockQuantity() {
+        return stockQuantity;
+    }
+
+    public void setStockQuantity(Integer stockQuantity) {
+        this.stockQuantity = stockQuantity;
+    }
+
+
     // category
     public Category getCategory() {
         return category;
@@ -114,6 +125,7 @@ public class Product implements Serializable {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
+                ", stockQuantity=" + stockQuantity +
                 ", status=" + status +
                 '}';
     }
@@ -130,6 +142,7 @@ public class Product implements Serializable {
         private String name;
         private String description;
         private byte[] image;
+        private Integer stockQuantity;
         private float price;
         private int status;
 
@@ -156,6 +169,11 @@ public class Product implements Serializable {
             return this;
         }
 
+        public ProductBuilder stockQuantity(Integer stockQuantity){
+            this.stockQuantity = stockQuantity;
+            return this;
+        }
+
         public ProductBuilder price(float price) {
             this.price = price;
             return this;
@@ -172,7 +190,7 @@ public class Product implements Serializable {
         }
 
         public Product build() {
-            return new Product(id, category, name, description, image, price, status);
+            return new Product(id, category, name, description, image, price, stockQuantity, status);
         }
     }
 }

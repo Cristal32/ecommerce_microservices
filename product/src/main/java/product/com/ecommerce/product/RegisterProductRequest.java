@@ -9,6 +9,7 @@ public record RegisterProductRequest (
         String name,
         String description,
         MultipartFile image,
+		Integer stockQuantity,
         Float price) {
 }
 

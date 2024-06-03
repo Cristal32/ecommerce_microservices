@@ -15,12 +15,14 @@ public class Client {
     private String firstName;
     private String lastName;
     private String email;
+    private String tel;
 
-    public Client(Long id, String firstName, String lastName, String email) {
+    public Client(Long id, String firstName, String lastName, String email, String tel) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.tel = tel;
     }
 
     public Client() {
@@ -45,6 +47,8 @@ public class Client {
         return email;
     }
 
+    public String getTel(){ return tel;}
+
     // Setter methods
 
     public void setId(Long id) {
@@ -62,6 +66,7 @@ public class Client {
     public void setEmail(String email) {
         this.email=email;
     }
+    public void setTel(String tel){ this.tel = tel;}
 
     // toString() method
     @Override
@@ -71,6 +76,7 @@ public class Client {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
+                ", tel='" + tel + '\'' +
                 '}';
     }
     
@@ -85,6 +91,7 @@ public class Client {
         private String firstName;
         private String lastName;
         private String email;
+        private String tel;
 
         private Builder() {
         }
@@ -109,8 +116,13 @@ public class Client {
             return this;
         }
 
+        public Builder tel(String tel){
+            this.tel = tel;
+            return this;
+        }
+
         public Client build() {
-            return new Client(id, firstName, lastName, email);
+            return new Client(id, firstName, lastName, email, tel);
         }
     }
 }

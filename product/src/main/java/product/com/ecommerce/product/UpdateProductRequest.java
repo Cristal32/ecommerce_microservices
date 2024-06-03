@@ -11,5 +11,6 @@ public record UpdateProductRequest (
         String description,
         MultipartFile image,
         Float price,
+		Integer stockQuantity,
         Integer status) {
 }

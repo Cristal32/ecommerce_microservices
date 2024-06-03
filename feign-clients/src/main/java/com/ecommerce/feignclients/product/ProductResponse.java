@@ -5,19 +5,21 @@ public class ProductResponse {
     private String name;
     private String image;
     private Integer price;
-    private CategoryDTO category; 
+    private CategoryDTO category;
+    private Integer stockQuantity;
 
     // Default constructor
     public ProductResponse() {
     }
 
     // Constructor with all fields
-    public ProductResponse(Long id, String name, String image, Integer price, CategoryDTO category) {
+    public ProductResponse(Long id, String name, String image, Integer price, CategoryDTO category, Integer stockQuantity) {
         this.id = id;
     	this.name = name;
         this.image = image;
         this.price = price;
         this.category = category;
+        this.stockQuantity = stockQuantity;
     }
 
     // Getters and setters ------------------------------------------------------
@@ -65,7 +67,8 @@ public class ProductResponse {
     public void setCategory(CategoryDTO category) {
         this.category = category;
     }
-
+    public Integer getStockQuantity(){ return stockQuantity;}
+    public void setStockQuantity(Integer stockQuantity){ this.stockQuantity = stockQuantity;}
     // toString method
     @Override
     public String toString() {
@@ -74,6 +77,7 @@ public class ProductResponse {
                 ", image='" + image + '\'' +
                 ", price=" + price +
                 ", category=" + category.getName() +
+                ", stockQuantity=" + stockQuantity +
                 '}';
     }
 

@@ -4,16 +4,18 @@ public class OrderRequest {
     private Long clientId;
     private String clientEmail;
     private Long productId;
+    private Integer amount;
 
     // Default constructor
     public OrderRequest() {
     }
 
     // All-args constructor
-    public OrderRequest(Long clientId, String clientEmail, Long productId) {
+    public OrderRequest(Long clientId, String clientEmail, Long productId, Integer amount) {
         this.clientId = clientId;
         this.clientEmail = clientEmail;
         this.productId = productId;
+        this.amount = amount;
     }
 
     // Getters and setters
@@ -41,6 +43,14 @@ public class OrderRequest {
         this.productId = productId;
     }
 
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
     // toString method
     @Override
     public String toString() {
@@ -48,6 +58,7 @@ public class OrderRequest {
                 "clientId=" + clientId +
                 ", clientEmail='" + clientEmail + '\'' +
                 ", productId=" + productId +
+                ", amount=" + amount +
                 '}';
     }
 }

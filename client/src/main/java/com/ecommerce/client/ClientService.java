@@ -26,6 +26,7 @@ public class ClientService {
 				.firstName(request.firstName())
 				.lastName(request.lastName())
 				.email(request.email())
+				.tel(request.tel())
 				.build();
 
 		// todo: check if email is valid
@@ -39,6 +40,7 @@ public class ClientService {
 		client.setFirstName(request.firstName());
 		client.setLastName(request.lastName());
 		client.setEmail(request.email());
+		client.setTel(request.tel());
 		return clientRepository.save(client);
 	}
 

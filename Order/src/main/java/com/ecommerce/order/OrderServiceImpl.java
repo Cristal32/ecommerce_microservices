@@ -67,6 +67,7 @@ public class OrderServiceImpl implements OrderService {
                 .clientId(order.getClientId())
                 .productId(order.getProductId())
                 .date(LocalDateTime.now())
+				.amount(order.getAmount())
                 .build());
 		
 		// Create notificationRequest

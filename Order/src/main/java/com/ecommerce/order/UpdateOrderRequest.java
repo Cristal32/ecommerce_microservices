@@ -5,6 +5,7 @@ import java.util.Date;
 public record UpdateOrderRequest(
         Date date,
         String adresse,
-        String statut
+        String statut,
+        Integer amount
 ) {
 }
