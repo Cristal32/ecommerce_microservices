@@ -1,0 +1,43 @@
+package com.ecommerce.auth.model;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+public class Role {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "role_id", unique = true, nullable = false)
+	private Long id;
+	
+	@Column(name = "role_name", length = 100, unique = true)
+	private String name;
+	
+	//constructeurs
+		public Role() {}
+		
+		public Role(Long id, String name) {
+			this.id = id;
+			this.name = name;
+		}
+		
+		// Getters & Setters
+		// id
+		public Long getId() {
+			return id;
+		}
+		
+		public void setId(Long id) {
+			this.id = id;
+		}
+		
+		// libelle
+		public String getName() {
+			return name;
+		}
+		
+		public void setName(String name) {
+			this.name = name;
+		}
+}

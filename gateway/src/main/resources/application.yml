@@ -44,3 +44,12 @@ spring:
           uri: http://localhost:8083
           predicates:
             - Path=/api/payment/**
+        - id: notification
+          uri: http://localhost:8084
+          predicates:
+            - Path=/api/notification/**
+        - id: auth
+          uri: http://localhost:8085
+          predicates:
+            - Path=/api/auth/**    
+        
