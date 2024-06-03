@@ -31,6 +31,19 @@ public class CategoryServiceImpl implements CategoryService {
     public Category registerCategory(Category category) {
         return categoryDao.save(category);
     }
+
+
+
+    @Override
+    public Category updateCategory(Long id, Category category) {
+        Category existingCategory = categoryDao.findById(id).orElse(null);
+        if (existingCategory != null) {
+            existingCategory.setName(category.getName());
+            existingCategory.setDescription(category.getDescription());
+            return categoryDao.save(existingCategory);
+        }
+        return null;
+    }
     
     // ---------------------------- delete a category ----------------------------
     @Override

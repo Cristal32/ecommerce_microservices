@@ -56,12 +56,16 @@ public class CategoryController {
     }
 	
 	// ================================= PUT Mapping =================================
-	
-	@PutMapping("/update")
-	public ResponseEntity<Category> updateCategory(@RequestBody Category category)  {
-		Category updatedCategory = categoryService.registerCategory(category);
-		return ResponseEntity.ok(updatedCategory);
-    }
+
+	@PutMapping("/update/{id}")
+	public ResponseEntity<Category> updateCategory(@PathVariable("id") Long id, @RequestBody Category category) {
+		Category updatedCategory = categoryService.updateCategory(id, category);
+		if (updatedCategory != null) {
+			return new ResponseEntity<>(updatedCategory, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
 	
 	// ================================= DELETE Mapping =================================
 	@Transactional
