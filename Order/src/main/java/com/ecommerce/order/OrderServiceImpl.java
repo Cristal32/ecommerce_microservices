@@ -11,7 +11,6 @@ import com.ecommerce.feignclients.customer.CustomerClient;
 import com.ecommerce.feignclients.notification.NotificationRequest;
 import com.ecommerce.feignclients.order.OrderRequest;
 import com.ecommerce.feignclients.product.ProductClient;
-import com.ecommerce.order.model.Order;
 
 @Service
 public class OrderServiceImpl implements OrderService {

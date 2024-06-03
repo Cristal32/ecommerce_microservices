@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ecommerce.feignclients.order.OrderRequest;
-import com.ecommerce.order.model.Order;
 
 import java.util.List;
 import java.util.logging.Logger;
