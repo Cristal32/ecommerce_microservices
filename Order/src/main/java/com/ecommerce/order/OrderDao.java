@@ -6,8 +6,6 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.ecommerce.order.model.Order;
-
 @Repository
 public interface OrderDao extends JpaRepository<Order, Integer> {
 	Optional<Order> findOrderById(Long orderId);

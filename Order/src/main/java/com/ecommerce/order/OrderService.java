@@ -3,7 +3,6 @@ package com.ecommerce.order;
 import java.util.List;
 
 import com.ecommerce.feignclients.order.OrderRequest;
-import com.ecommerce.order.model.Order;
 
 public interface OrderService {
 	public List<Order> getAllOrders();

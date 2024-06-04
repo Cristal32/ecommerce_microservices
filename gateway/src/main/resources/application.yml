@@ -28,19 +28,46 @@ spring:
           uri: http://localhost:8080
           predicates:
             - Path=/api/client/**
+          filters:
+            - AuthFilter
+            
         - id: order
           uri: http://localhost:8081
           predicates:
             - Path=/api/order/**
+          filters:
+            - AuthFilter
+            
         - id: product
           uri: http://localhost:8082
           predicates:
             - Path=/api/product/**
+          filters:
+            - AuthFilter
+            
         - id: category
           uri: http://localhost:8082
           predicates:
             - Path=/api/category/**
+          filters:
+            - AuthFilter
+            
         - id: payment
           uri: http://localhost:8083
           predicates:
             - Path=/api/payment/**
+          filters:
+            - AuthFilter
+            
+        - id: notification
+          uri: http://localhost:8084
+          predicates:
+            - Path=/api/notification/**
+          filters:
+            - AuthFilter
+            
+        - id: auth
+          uri: http://localhost:8085
+          predicates:
+            - Path=/api/auth/**    
+        
