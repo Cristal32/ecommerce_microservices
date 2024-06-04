@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import product.com.ecommerce.product.RegisterProductRequest;
@@ -89,6 +90,15 @@ public class ProductController {
     public Product updateProduct(@PathVariable Long id, @ModelAttribute UpdateProductRequest updateProductRequest) throws IOException {
         return productService.updateProduct(id, updateProductRequest);
     }
+	
+	@PutMapping("/updateStockQuantity/{id}")
+	public Product updateProductStockQuantity(
+	        @PathVariable Long id,
+	        @RequestParam(value = "stockQuantity", required = false) Integer stockQuantity
+	) {
+	    UpdateProductRequest updateProductRequest = new UpdateProductRequest(null, null, null, null, null, null, stockQuantity, null);
+	    return productService.updateProduct(id, updateProductRequest);
+	}
 	
 	// ================================= DELETE Mapping =================================
 	@DeleteMapping("/delete/{id}")

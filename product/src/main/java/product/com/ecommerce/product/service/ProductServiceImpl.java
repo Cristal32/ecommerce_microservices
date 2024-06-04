@@ -75,6 +75,14 @@ public class ProductServiceImpl implements ProductService {
     // ---------------------------- update a product ----------------------------
     @Override
     public Product updateProduct(Long id, UpdateProductRequest request) {
+    	String name = request.name();
+    	String description = request.description();
+    	Integer stockQuantity = request.stockQuantity();
+    	System.out.println("request{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", stockQuantity=" + stockQuantity +
+                '}');
         Optional<Product> existingProductOptional = productDao.findById(id);
         
         if (existingProductOptional.isPresent()) {
@@ -97,6 +105,8 @@ public class ProductServiceImpl implements ProductService {
             if (request.category() != null) {product.setCategory(request.category());}
             if (request.status() != null) {product.setStatus(request.status());}
             if (request.stockQuantity() != null) {product.setStockQuantity(request.stockQuantity());}
+            
+            System.out.println("updated product: " + product);
             
             return productDao.saveAndFlush(product);
         } else {
