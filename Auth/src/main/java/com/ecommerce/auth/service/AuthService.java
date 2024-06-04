@@ -11,7 +11,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ecommerce.auth.dto.UpdateUserRequest;
-import com.ecommerce.auth.model.Role;
 import com.ecommerce.auth.model.User;
 import com.ecommerce.auth.repository.UserDao;
 import com.ecommerce.feignclients.customer.ClientDTO;
@@ -36,22 +35,42 @@ public class AuthService {
 		return userDao.findAll();
 	}
 	
+	// ---------------------- get a user by their id --------------------------
+		public User findUserById(Long id){
+			return userDao.findById(id).orElse(null);
+		}
+	
 	// ---------------------- save a user --------------------------
 //	public User registerUser(User user) {
 //		user.setPassword(passwordEncoder.encode(user.getPassword())); // Encrypt the password
 //		return userDao.save(user);
 //	}
 	
-	@Transactional
-    public User registerUserWithClient(User user, ClientDTO client) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        User savedUser = userDao.save(user);
-        
-        // Create client
-        customerClient.createClient(client);
+		public User registerUserWithClient(User user, ClientDTO client) {
+		    User savedUser = registerUser(user);
 
-        return savedUser;
-    }
+		    // Log the user ID and client details
+		    System.out.println("User saved with ID: " + savedUser.getId());
+
+		    // Create client
+		    client.setUserId(savedUser.getId());
+		    System.out.println("Client details: " + client);
+		    registerClient(client);
+
+		    return savedUser;
+		}
+	
+	@Transactional
+	public User registerUser(User user) {
+	    user.setPassword(passwordEncoder.encode(user.getPassword()));
+	    return userDao.save(user);
+	}
+	
+	@Transactional
+	public void registerClient(ClientDTO client) {
+	    System.out.println("Client details: " + client);
+	    customerClient.createClient(client);
+	}
 	
 	// ---------------------- update a user --------------------------
 		public User updateUser(String username, UpdateUserRequest userRequest) {

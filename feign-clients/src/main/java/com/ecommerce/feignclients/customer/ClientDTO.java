@@ -6,16 +6,18 @@ public class ClientDTO {
     private String lastName;
     private String email;
     private String tel;
+    private Long userId;
     
     // Constructors
     public ClientDTO() {}
 
-    public ClientDTO(Long id, String firstName, String lastName, String email, String tel) {
+    public ClientDTO(Long id, String firstName, String lastName, String email, String tel, Long userId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.tel = tel;
+        this.userId = userId;
     }
 
     // Getters 
@@ -54,6 +56,11 @@ public class ClientDTO {
         this.email=email;
     }
     public void setTel(String tel){ this.tel = tel;}
+    
+    // userId
+    public Long getUserId() { return userId; }
+    
+    public void setUserId(Long userId) { this.userId = userId; }
 
     // toString() method
     @Override
@@ -64,6 +71,7 @@ public class ClientDTO {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", tel='" + tel + '\'' +
+                ", userId=" + userId +
                 '}';
     }
 }

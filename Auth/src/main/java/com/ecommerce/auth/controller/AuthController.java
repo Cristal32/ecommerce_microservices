@@ -41,6 +41,12 @@ public class AuthController {
 		return new ResponseEntity<>(users, HttpStatus.OK);
 	}
 	
+	@GetMapping("/getById/{id}")
+	public ResponseEntity<User> getUserById(@PathVariable("id") Long id){
+		User user = authService.findUserById(id);
+		return new ResponseEntity<>(user, HttpStatus.OK);
+	}
+	
 	@GetMapping("/validateToken")
 	public ResponseEntity<?> validateToken(@RequestParam("token") String token) {
 		authService.validateToken(token);

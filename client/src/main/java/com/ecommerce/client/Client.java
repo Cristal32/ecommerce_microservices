@@ -16,57 +16,66 @@ public class Client {
     private String lastName;
     private String email;
     private String tel;
+    private Long userId;
+    
+    // Constructors
+    public Client() {}
 
-    public Client(Long id, String firstName, String lastName, String email, String tel) {
+    public Client(Long id, String firstName, String lastName, String email, String tel, Long userId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.tel = tel;
+        this.userId = userId;
     }
 
-    public Client() {
-    }
-
-
-
-    // Getter methods
+    // Getters & setters
+    // id
     public Long getId() {
         return id;
     }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getTel(){ return tel;}
-
-    // Setter methods
-
+    
     public void setId(Long id) {
         this.id=id;
     }
 
+    // firstName
+    public String getFirstName() {
+        return firstName;
+    }
+    
     public void setFirstName(String firstName) {
         this.firstName=firstName;
     }
 
+    // lastName
+    public String getLastName() {
+        return lastName;
+    }
+    
     public void setLastName(String lastName) {
         this.lastName=lastName;
     }
 
+    // email
+    public String getEmail() {
+        return email;
+    }
+    
     public void setEmail(String email) {
         this.email=email;
     }
+
+    // tel
+    public String getTel(){ return tel;}
+
     public void setTel(String tel){ this.tel = tel;}
+    
+    // userId
+    public Long getUserId() { return userId; }
+    
+    public void setUserId(Long userId) { this.userId = userId; }
 
     // toString() method
     @Override
@@ -92,6 +101,7 @@ public class Client {
         private String lastName;
         private String email;
         private String tel;
+        private Long userId;
 
         private Builder() {
         }
@@ -120,9 +130,14 @@ public class Client {
             this.tel = tel;
             return this;
         }
+        
+        public Builder userId(Long userId) {
+        	this.userId = userId;
+        	return this;
+        }
 
         public Client build() {
-            return new Client(id, firstName, lastName, email, tel);
+            return new Client(id, firstName, lastName, email, tel, userId);
         }
     }
 }

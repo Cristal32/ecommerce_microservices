@@ -4,5 +4,6 @@ public record RegisterClientRequest(
 		String firstName, 
 		String lastName, 
 		String email,
-		String tel) {
+		String tel,
+		Long userId) {
 }
