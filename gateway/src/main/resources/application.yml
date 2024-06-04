@@ -65,6 +65,13 @@ spring:
             - Path=/api/notification/**
           filters:
             - AuthFilter
+         
+        - id: roles
+          uri: http://localhost:8085
+          predicates:
+            - Path=/api/role/**
+          filters:
+            - AuthFilter
             
         - id: auth
           uri: http://localhost:8085

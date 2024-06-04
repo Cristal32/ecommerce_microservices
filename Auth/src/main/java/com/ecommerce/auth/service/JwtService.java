@@ -4,7 +4,15 @@ import java.security.Key;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.ecommerce.auth.model.Role;
+import com.ecommerce.auth.repository.UserDao;
+
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
@@ -18,10 +26,17 @@ public class JwtService {
 		Jwts.parserBuilder().setSigningKey(getSignKey()).build().parseClaimsJws(token);
 	}
 	
-	public String generateToken(String username) {
-		Map<String, Object> claims = new HashMap<>();
-		return createToken(claims, username);
-	}
+	// ------------------------ generate token -------------------------------
+//	public String generateToken(String username) {
+//		Map<String, Object> claims = new HashMap<>();
+//		return createToken(claims, username);
+//	}
+	
+	public String generateToken(String username, Set<Role> roles) {
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("roles", roles.stream().map(Role::getName).collect(Collectors.toList()));
+        return createToken(claims, username);
+    }
 	
 	public String createToken(Map<String, Object> claims, String username) {
 		return Jwts.builder()

@@ -79,4 +79,41 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+    
+    // Builder pattern
+    public static class Builder {
+        private Long id;
+        private String username;
+        private String password;
+        private Set<Role> roles = new HashSet<>();
+
+        public Builder setId(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder setUsername(String username) {
+            this.username = username;
+            return this;
+        }
+
+        public Builder setPassword(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public Builder setRoles(Set<Role> roles) {
+            this.roles = roles;
+            return this;
+        }
+
+        public Builder addRole(Role role) {
+            this.roles.add(role);
+            return this;
+        }
+
+        public User build() {
+            return new User(id, username, password, roles);
+        }
+    }
 }

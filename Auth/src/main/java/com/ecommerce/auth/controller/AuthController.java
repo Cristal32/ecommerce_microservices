@@ -7,11 +7,15 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.ecommerce.auth.dto.UpdateUserRequest;
 import com.ecommerce.auth.dto.UserRequest;
 import com.ecommerce.auth.model.User;
 import com.ecommerce.auth.service.AuthService;
@@ -50,5 +54,11 @@ public class AuthController {
 		}else {
 			throw new RuntimeException("Invalid user credentials!");
 		}
+	}
+	
+	// ================================= PUT mapping =================================
+	@PutMapping("/update/{username}")
+	public User registerUser(@PathVariable("username") String username, @RequestBody UpdateUserRequest userRequest) {
+		return authService.updateUser(username, userRequest);
 	}
 }

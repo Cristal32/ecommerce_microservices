@@ -1,9 +1,14 @@
 package com.ecommerce.auth.service;
 
+import java.util.Optional;
+
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.ecommerce.auth.dto.UpdateUserRequest;
 import com.ecommerce.auth.model.User;
 import com.ecommerce.auth.repository.UserDao;
 
@@ -24,10 +29,37 @@ public class AuthService {
 		return userDao.save(user);
 	}
 	
+	// ---------------------- update a user --------------------------
+		public User updateUser(String username, UpdateUserRequest userRequest) {
+			Optional<User> existingUser = userDao.findByUsername(username);
+			
+			if (existingUser.isPresent()) {
+	        	
+	            User user = existingUser.get();
+	            if (userRequest.username() != null) { 
+	            	user.setUsername(userRequest.username());}
+	            
+	            if (userRequest.password() != null) { 
+	            	user.setPassword(passwordEncoder.encode(userRequest.password()));
+	            }
+	            if (userRequest.roles() != null) {
+	                user.setRoles(userRequest.roles());
+	            }
+	            return userDao.saveAndFlush(user);
+	        } else {
+	            throw new EntityNotFoundException("User with username " + username + " not found");
+	        }
+		}
+	
 	// ---------------------- generate a token --------------------------
+//	public String generateToken(String username) {
+//		return jwtService.generateToken(username);
+//	}
+	
 	public String generateToken(String username) {
-		return jwtService.generateToken(username);
-	}
+        User user = userDao.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
+        return jwtService.generateToken(username, user.getRoles());
+    }
 	
 	// ---------------------- validate the token --------------------------
 	public void validateToken(String token) {
