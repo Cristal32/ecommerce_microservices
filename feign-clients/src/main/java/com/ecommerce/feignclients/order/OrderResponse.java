@@ -3,19 +3,19 @@ package com.ecommerce.feignclients.order;
 import java.time.LocalDateTime;
 
 import com.ecommerce.feignclients.customer.ClientDTO;
-import com.ecommerce.feignclients.product.ProductResponse;
+import com.ecommerce.feignclients.product.ProductDTO;
 
 public class OrderResponse {
     private Long id;
     private ClientDTO client;
-    private ProductResponse product;
+    private ProductDTO product;
     private LocalDateTime createdAt;
 
     // Default constructor
     public OrderResponse() {}
 
     // All-args constructor
-    public OrderResponse(Long id, ClientDTO client, ProductResponse product, LocalDateTime createdAt) {
+    public OrderResponse(Long id, ClientDTO client, ProductDTO product, LocalDateTime createdAt) {
         this.id = id;
         this.client = client;
         this.product = product;
@@ -39,11 +39,11 @@ public class OrderResponse {
         this.client = client;
     }
 
-    public ProductResponse getProduct() {
+    public ProductDTO getProduct() {
         return product;
     }
 
-    public void setProduct(ProductResponse product) {
+    public void setProduct(ProductDTO product) {
         this.product = product;
     }
 

@@ -1,6 +1,6 @@
 package com.ecommerce.feignclients.product;
 
-public class ProductResponse {
+public class ProductDTO {
 	private Long id;
     private String name;
     private String image;
@@ -9,11 +9,11 @@ public class ProductResponse {
     private Integer stockQuantity;
 
     // Default constructor
-    public ProductResponse() {
+    public ProductDTO() {
     }
 
     // Constructor with all fields
-    public ProductResponse(Long id, String name, String image, Integer price, CategoryDTO category, Integer stockQuantity) {
+    public ProductDTO(Long id, String name, String image, Integer price, CategoryDTO category, Integer stockQuantity) {
         this.id = id;
     	this.name = name;
         this.image = image;
@@ -87,7 +87,7 @@ public class ProductResponse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ProductResponse that = (ProductResponse) o;
+        ProductDTO that = (ProductDTO) o;
 
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (image != null ? !image.equals(that.image) : that.image != null) return false;
