@@ -1,5 +1,7 @@
 package com.ecommerce.auth.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,14 +17,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ecommerce.auth.dto.RegisterUserRequest;
 import com.ecommerce.auth.dto.UpdateUserRequest;
 import com.ecommerce.auth.dto.UserRequest;
 import com.ecommerce.auth.model.User;
 import com.ecommerce.auth.service.AuthService;
+import com.ecommerce.feignclients.customer.ClientDTO;
 
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+
 	@Autowired
 	private AuthService authService;
 	
@@ -30,6 +35,12 @@ public class AuthController {
 	private AuthenticationManager authManager;
 	
 	// ================================= GET mapping =================================
+	@GetMapping("/getAll")
+	public ResponseEntity<List<User>> getAllUsers() {
+		List<User> users = authService.getAllUsers();
+		return new ResponseEntity<>(users, HttpStatus.OK);
+	}
+	
 	@GetMapping("/validateToken")
 	public ResponseEntity<?> validateToken(@RequestParam("token") String token) {
 		authService.validateToken(token);
@@ -37,10 +48,18 @@ public class AuthController {
 	}
 	
 	// ================================= POST mapping =================================
+//	@PostMapping("/register")
+//	public User registerUser(@RequestBody User user) {
+//		return authService.registerUser(user);
+//	}
+	
 	@PostMapping("/register")
-	public User registerUser(@RequestBody User user) {
-		return authService.registerUser(user);
-	}
+    public ResponseEntity<User> registerUser(@RequestBody RegisterUserRequest registerUserRequest) {
+        User user = registerUserRequest.getUser();
+        ClientDTO client = registerUserRequest.getClient();
+        User registeredUser = authService.registerUserWithClient(user, client);
+        return ResponseEntity.ok(registeredUser);
+    }
 	
 	@PostMapping("/getToken")
 	public ResponseEntity<String> getToken(@RequestBody UserRequest user) {

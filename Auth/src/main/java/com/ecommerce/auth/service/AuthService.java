@@ -1,16 +1,21 @@
 package com.ecommerce.auth.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ecommerce.auth.dto.UpdateUserRequest;
+import com.ecommerce.auth.model.Role;
 import com.ecommerce.auth.model.User;
 import com.ecommerce.auth.repository.UserDao;
+import com.ecommerce.feignclients.customer.ClientDTO;
+import com.ecommerce.feignclients.customer.CustomerClient;
 
 @Service
 public class AuthService {
@@ -21,13 +26,32 @@ public class AuthService {
 	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
+    private CustomerClient customerClient;
+	
+	@Autowired
 	private JwtService jwtService;
 	
-	// ---------------------- save a user --------------------------
-	public User registerUser(User user) {
-		user.setPassword(passwordEncoder.encode(user.getPassword())); // Encrypt the password
-		return userDao.save(user);
+	// ---------------------- get all users --------------------------
+	public List<User> getAllUsers(){
+		return userDao.findAll();
 	}
+	
+	// ---------------------- save a user --------------------------
+//	public User registerUser(User user) {
+//		user.setPassword(passwordEncoder.encode(user.getPassword())); // Encrypt the password
+//		return userDao.save(user);
+//	}
+	
+	@Transactional
+    public User registerUserWithClient(User user, ClientDTO client) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        User savedUser = userDao.save(user);
+        
+        // Create client
+        customerClient.createClient(client);
+
+        return savedUser;
+    }
 	
 	// ---------------------- update a user --------------------------
 		public User updateUser(String username, UpdateUserRequest userRequest) {
