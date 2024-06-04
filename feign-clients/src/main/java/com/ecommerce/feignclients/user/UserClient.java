@@ -9,4 +9,7 @@ public interface UserClient {
 
     @GetMapping(path = "/getById/{id}")
     UserDTO findUserById(@PathVariable("id") Long id);
+    
+    @GetMapping(path = "/getByUsername/{username}")
+    UserDTO findUserByUsername(@PathVariable("username") String username);
 }

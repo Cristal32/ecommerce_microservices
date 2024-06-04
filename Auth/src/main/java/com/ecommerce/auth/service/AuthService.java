@@ -39,6 +39,11 @@ public class AuthService {
 		public User findUserById(Long id){
 			return userDao.findById(id).orElse(null);
 		}
+		
+	// ---------------------- get a user by their username --------------------------
+			public User findUserByUsername(String username){
+				return userDao.findByUsername(username).orElse(null);
+			}
 	
 	// ---------------------- save a user --------------------------
 //	public User registerUser(User user) {

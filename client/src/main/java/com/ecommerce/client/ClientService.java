@@ -18,15 +18,40 @@ public class ClientService {
 	@Autowired
 	private UserClient userClient;
 	
-
+	// ------------------------------------ Get all clients ------------------------------------
 	public List<Client> getAllClients(){
 		return clientRepository.findAll();
 	}
 
+	// ------------------------------------ Get client by id ------------------------------------
 	public Client getClient(Long id){
 		return clientRepository.findById(id).get();
 	}
+	
+	// ------------------------------------ Get client by userId ------------------------------------
+		public Client getClientByUserId(Long userId){
+			return clientRepository.findClientByUserId(userId).get();
+		}
+	
+	// ------------------------------------ get client by username ------------------------------------
+	public Client getClientByUsername(String username) {
+        try {
+            // Fetch user by username using Feign client
+            UserDTO user = userClient.findUserByUsername(username);
+            if (user == null) {
+                throw new IllegalArgumentException("User not found for username: " + username);
+            }
 
+            // Fetch client by user ID
+            Long userId = user.getId();
+            System.out.println("userId = " + userId);
+            return getClientByUserId(userId);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Error while fetching client by username: " + e.getMessage());
+        }
+    }
+
+	// ------------------------------------ register client ------------------------------------
 	public Client registerClient(RegisterClientRequest request) {
 		Long userId = request.userId();
 		if (userId != null) {

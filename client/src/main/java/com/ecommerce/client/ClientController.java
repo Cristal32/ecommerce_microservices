@@ -21,6 +21,12 @@ public class ClientController {
 
 	@GetMapping("getById/{id}")
 	public Client getClient(@PathVariable("id") Long id) {return clientService.getClient(id);}
+	
+	@GetMapping("getByUserId/{userId}")
+	public Client getClientByUserId(@PathVariable("userId") Long userId) {return clientService.getClientByUserId(userId);}
+	
+	@GetMapping("getByUsername/{username}")
+	public Client getClientByUsername(@PathVariable("username") String username) {return clientService.getClientByUsername(username);}
 
 	// ============================= POST mapping =============================	
 	@PostMapping("add")
