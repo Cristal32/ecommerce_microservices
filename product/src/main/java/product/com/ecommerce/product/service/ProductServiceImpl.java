@@ -67,7 +67,6 @@ public class ProductServiceImpl implements ProductService {
                 .price(request.price())
                 .stockQuantity(request.stockQuantity())
                 .category(request.category())
-                .status(0)
                 .build();
         return productDao.saveAndFlush(product);
     }
@@ -95,7 +94,6 @@ public class ProductServiceImpl implements ProductService {
             
             if (request.price() != null) {product.setPrice(request.price());}
             if (request.category() != null) {product.setCategory(request.category());}
-            if (request.status() != null) {product.setStatus(request.status());}
             if (request.stockQuantity() != null) {product.setStockQuantity(request.stockQuantity());}
             
             return productDao.saveAndFlush(product);

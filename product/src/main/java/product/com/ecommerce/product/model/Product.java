@@ -27,12 +27,11 @@ public class Product implements Serializable {
     private byte[] image;
     private float price;
     private Integer stockQuantity;
-    private int status; // 0 = available, 1 = sold
 
     public Product() {
     }
 
-    public Product(Long id, Category category, String name, String description, byte[] image, float price, Integer stockQuantity, int status) {
+    public Product(Long id, Category category, String name, String description, byte[] image, float price, Integer stockQuantity) {
         this.id = id;
         this.category = category;
         this.name = name;
@@ -40,7 +39,6 @@ public class Product implements Serializable {
         this.image = image;
         this.price = price;
         this.stockQuantity = stockQuantity;
-        this.status = status;
     }
     
     // Getters & setters ---------------------------------------------------------------------
@@ -108,15 +106,6 @@ public class Product implements Serializable {
     public void setCategory(Category category) {
         this.category = category;
     }
-    
-    // status
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
 
     @Override
     public String toString() {
@@ -126,7 +115,6 @@ public class Product implements Serializable {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", stockQuantity=" + stockQuantity +
-                ", status=" + status +
                 '}';
     }
     
@@ -144,7 +132,6 @@ public class Product implements Serializable {
         private byte[] image;
         private Integer stockQuantity;
         private float price;
-        private int status;
 
         private ProductBuilder() {}
 
@@ -184,13 +171,8 @@ public class Product implements Serializable {
             return this;
         }
         
-        public ProductBuilder status(int status) {
-            this.status = status;
-            return this;
-        }
-
         public Product build() {
-            return new Product(id, category, name, description, image, price, stockQuantity, status);
+            return new Product(id, category, name, description, image, price, stockQuantity);
         }
     }
 }
