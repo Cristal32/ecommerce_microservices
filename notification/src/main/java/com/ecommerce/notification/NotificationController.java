@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/notifications")
+@RequestMapping("api/notification")
 public class NotificationController {
 	@Autowired
 	private NotificationService notificationService;
@@ -22,16 +22,19 @@ public class NotificationController {
 	@GetMapping("/getAll")
     public ResponseEntity<List<Notification>> getAllNotifications() {
         System.out.println("Retrieving all notifications");
-        return new ResponseEntity<>( notificationService.getAllNotification(), HttpStatus.OK );
+        return new ResponseEntity<>( notificationService.getAllNotifications(), HttpStatus.OK );
     }
 	
 	@GetMapping("getById/{id}")
     public ResponseEntity<Notification> getNotification(@PathVariable("id") Long id) {
         System.out.println("Retrieving notification with id {}" + id);
-        return new ResponseEntity<>(
-                notificationService.getNotification(id),
-                HttpStatus.OK
-        );
+        return new ResponseEntity<>(notificationService.getNotification(id), HttpStatus.OK);
+    }
+	
+	@GetMapping("getByClientId/{clientId}")
+    public ResponseEntity<List<Notification>> getNotificationByClientId(@PathVariable("clientId") Long clientId) {
+        System.out.println("Retrieving notification with id {}" + clientId);
+        return new ResponseEntity<>(notificationService.getNotificationsByClientId(clientId), HttpStatus.OK);
     }
 
 	// ============================= POST mapping =============================	

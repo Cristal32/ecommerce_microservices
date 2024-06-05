@@ -14,7 +14,7 @@ public class NotificationServiceImpl implements NotificationService {
 
 	// ---------------------------- get all notifications ----------------------------
     @Override
-    public List<Notification> getAllNotification() {
+    public List<Notification> getAllNotifications() {
         return notificationDao.findAll();
     }
 	
@@ -23,6 +23,13 @@ public class NotificationServiceImpl implements NotificationService {
     public Notification getNotification(Long id) {
     	return notificationDao.findById(id).orElseThrow(() ->
                 new IllegalStateException("Notification not found"));
+    }
+    
+ // ---------------------------- get a notification by its client id ----------------------------
+    @Override
+    public List<Notification> getNotificationsByClientId(Long clientId) {
+    	return notificationDao.findByClientId(clientId).orElseThrow(() ->
+                new IllegalStateException("Notifications not found for client " + clientId));
     }
 
  // ---------------------------- send a notification ----------------------------
