@@ -120,16 +120,7 @@ public class OrderServiceImpl implements OrderService {
       
 
 	    // Update the product quantity
-	      productClient.updateProductQuantity(order.getProductId(), new UpdateProductRequest(
-	              null, // Set null for ID as we only need to update the stockQuantity
-	              null,
-	              null,
-	              null,
-	              null,
-	              null,
-	              newStockQuantity, // Set the new stockQuantity value
-	              null
-	      ));
+	      productClient.updateProductQuantity(order.getProductId(), newStockQuantity);
 
 	    return orderEntity;
 	}
