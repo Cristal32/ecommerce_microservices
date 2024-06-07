@@ -1,0 +1,1052 @@
+/*Nav*/
+
+.nav {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.1rem 0.1rem;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    background-color: rgba(238, 55, 55, 0.8);
+    
+}
+
+.nav img {
+    width: 10%;
+    margin-left: 3%;
+}
+
+.nav ul {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 1.5rem;
+}
+
+.nav ul li {
+    margin: 0 1rem;
+    transition: all 0.3s;
+    background-color: #ef2d2d;
+    padding: 0.7rem 1.2rem;
+    border-radius: 1rem;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.nav ul li :hover{
+  color: #f5ee9e;
+  transform: translate(0, -0.5rem);
+}
+
+.nav .login {
+    background-color: rgba(58, 2, 2, 0.8);
+    padding: 0rem 1rem;
+    border-radius: 1rem;
+}
+
+.nav .link{
+  text-decoration: none;
+  color: inherit; 
+}
+
+.nav .logo{
+  border-radius: 1rem;
+  border: none;
+}
+
+/*Modal authentification*/
+
+.signModal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: scroll;
+}
+
+.signModal .signmodal-content {
+    position: relative;
+    color: white;
+    background-color: wheat;
+    color: black;
+    margin: 0.3rem 35%;
+    padding: 20px;
+    width: 30%;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signModal .signmodal-content h2 {
+      margin: 1rem 0 1rem;
+}
+
+.signModal .signmodal-content .signdiv {
+      margin-top: 0.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+}
+
+.signModal .signmodal-content .signdiv input {
+        width: 80%;
+        padding: 0.8rem;
+        border: none;
+        border-radius: 1rem;
+}
+
+.signModal .signmodal-content button {
+      margin: 0.3rem 0;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 1rem;
+      font-size: 1rem;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      background: rgba(238, 55, 55, 0.8);
+}
+
+.signModal .signmodal-content .separator {
+      margin: 0.5rem 0;
+      width: 100%;
+      height: 2px;
+      background-color: white;
+}
+
+.signModal .signmodal-content .close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    color: rgba(238, 55, 55, 0.8);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.signModal .signmodal-content .close:hover,
+.signModal .signmodal-content .close:focus {
+    cursor: pointer;
+}
+
+
+/*Welcome Page*/
+
+.welcome-page {
+    background-image: url("./assets/welcome-page.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 94vh;
+    width: 100%;
+    color: black;
+    text-align: center;
+    font-size: 1rem;
+    margin: 6rem 0rem;
+}
+
+.welcome-page h1{
+  
+  /* color: rgba(58, 2, 2, 0.8); */
+  color: rgba(137, 7, 7, 0.8);
+  margin-bottom: 1rem;
+}
+
+.lets-shop{
+  font-size: 3rem;
+}
+
+.USER{
+  color: black;
+}
+
+.welcome-page button{
+  margin: 5rem;
+  padding: 0.7rem;
+  font-size: 1rem;
+  font: bold;
+  border: none;
+  border-radius: 0.5rem;
+  color: black;
+  background-color: rgba(238, 55, 55, 0.8);
+  cursor: pointer;
+}
+
+.welcome-page button:hover{
+  color: white;
+  transform: translate(0, -0.5rem);
+}
+
+/*Catalogue*/
+
+.catalogue-up{
+    background-color: #f5f5f5;
+    background-size: cover; /* Cover the entire element */
+    background-position: center;
+    height: 70vh;
+    width: 100%;
+    color: black;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+.catalogue-up img{
+    max-width: 100%;
+    width: 30%;
+    height: auto;
+    margin-top: 4rem;
+    margin-left: 4rem;
+    border-radius: 1rem;
+}
+
+.catalogue-up h1{
+    color: rgba(169, 8, 243, 0.564);
+    margin-top: 7rem;
+}
+
+.catalogue-up h2{
+    color: rgba(202, 16, 199, 0.564);
+}
+
+.catalogue-up-text .search-div{
+  margin: 5rem;
+}
+
+.catalogue-up-text input{
+  width: 20rem;
+  border: none;
+  margin: 0.2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.catalogue-up-text button{
+  background-color: rgba(169, 8, 243, 0.564);
+  color: white;
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 6rem;
+  cursor: pointer;
+}
+
+.catalogue-down{
+  display: flex;
+}
+
+.catalogue-down .filter-by-category{
+  margin: 4rem;
+  width: 30%;
+  text-align: center;
+}
+
+.catalogue-down .msgs-client{
+  margin: 0.8rem 12rem;
+  width: 30%;
+  height: 60vh;
+  background-color: rgba(169, 8, 243, 0.564);
+  color: white;
+  border-radius: 1rem;
+  text-align: center;
+  overflow: auto;
+}
+
+.catalogue-down .msgs-client h3{
+  color: black;
+}
+
+.admin-actions button{
+  padding: 0.5rem;
+  border: none;
+  border-radius: 1rem;
+  margin-top: 7rem;
+  margin-left: 4rem;
+  background-color: rgba(169, 8, 243, 0.564);
+  color: white;
+  cursor: pointer;
+}
+
+.categories-button{
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    margin-left: 2rem;
+}
+
+.categories-button button{
+    padding: 1rem 3rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: rgba(169, 8, 243, 0.564);
+    transition: background-color 0.3s ease;
+}
+
+.categories-button button:hover {
+    background-color: #f5f5f5;
+    color: black;
+  }
+
+.products-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    grid-auto-rows: minmax(10rem, auto);
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #fafafa;
+  }
+  
+  .products-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 0.9rem;
+    border: 0.1rem solid #ddd;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .products-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+  }
+  
+  .products-item .product-info {
+    text-align: center;
+  }
+  
+  .products-item .product-info h4 {
+    margin: 0.2rem 0;
+    font-size: 1em;
+    color: #333;
+  }
+  
+  .products-item:hover {
+    transform: scale(1.05);
+  }
+
+
+/*Clothes*/
+
+.search-div{
+    margin-left: 25rem;
+}
+
+.clothes-section input{
+    width: 20rem;
+    outline: none;
+    margin: 0.2rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.clothes-section button{
+    background-color: #a11f1f;
+    color: white;
+    border: none;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 6rem;
+    cursor: pointer;
+}
+
+.clothes-section-up{
+    background-color: #f5f5f5;
+    background-size: cover; /* Cover the entire element */
+    background-position: center;
+    height: 30vh;
+    width: 100%;
+    color: black;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+.clothes-section-up img{
+    max-width: 100%;
+    width: 20%;
+    height: auto;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    border-radius: 1rem;
+}
+
+.clothes-section-up h1{
+    color: #a11f1f;
+}
+
+.clothes-section-up h2{
+    color: #a47f7f;
+}
+
+.clothes-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    grid-auto-rows: minmax(10rem, auto);
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #fafafa;
+  }
+  
+  .clothes-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 0.9rem;
+    border: 0.1rem solid #ddd;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .clothes-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+  }
+  
+  .clothes-item .clothes-info {
+    text-align: center;
+  }
+  
+  .clothes-item .clothes-info h4 {
+    margin: 0.2rem 0;
+    font-size: 1em;
+    color: #333;
+  }
+  
+  .clothes-item:hover {
+    transform: scale(1.05);
+  }
+
+
+/*cosmetics*/
+
+.search-div{
+    margin-left: 25rem;
+}
+
+.cosmetics-section input{
+    width: 20rem;
+    outline: none;
+    margin: 0.2rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.cosmetics-section button{
+    background-color: #a11f1f;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 6rem;
+}
+
+.cosmetics-section-up{
+    background-color: #f5f5f5;
+    background-size: cover; /* Cover the entire element */
+    background-position: center;
+    height: 30vh;
+    width: 100%;
+    color: black;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+.cosmetics-section-up img{
+    max-width: 100%;
+    width: 20%;
+    height: auto;
+    margin-top: 1rem;
+    margin-left: 2rem;
+    border-radius: 1rem;
+}
+
+.cosmetics-section-up h1{
+    color: #a11f1f;
+}
+
+.cosmetics-section-up h2{
+    color: #a47f7f;
+}
+
+.cosmetics-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    grid-auto-rows: minmax(10rem, auto);
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #fafafa;
+  }
+  
+  .cosmetics-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 0.9rem;
+    border: 0.1rem solid #ddd;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .cosmetics-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+  }
+  
+  .cosmetics-item .cosmetics-info {
+    text-align: center;
+  }
+  
+  .cosmetics-item .cosmetics-info h4 {
+    margin: 0.2rem 0;
+    font-size: 1em;
+    color: #333;
+  }
+  
+  .cosmetics-item:hover {
+    transform: scale(1.05);
+  }
+
+
+
+
+
+/*Books*/
+
+.search-div{
+    margin-left: 25rem;
+}
+
+.books-section input{
+    width: 20rem;
+    outline: none;
+    margin: 0.2rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.books-section button{
+    background-color: #a11f1f;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 6rem;
+}
+
+.books-section-up{
+    background-color: #f5f5f5;
+    background-size: cover; /* Cover the entire element */
+    background-position: center;
+    height: 30vh;
+    width: 100%;
+    color: black;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+.books-section-up img{
+    max-width: 100%;
+    width: 20%;
+    height: auto;
+    margin-top: 1.5rem;
+    margin-left: 2rem;
+    border-radius: 1rem;
+}
+
+.books-section-up h1{
+    color: #a11f1f;
+}
+
+.books-section-up h2{
+    color: #a47f7f;
+}
+
+.books-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    grid-auto-rows: minmax(10rem, auto);
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #fafafa;
+  }
+  
+  .books-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 0.9rem;
+    border: 0.1rem solid #ddd;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .books-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+  }
+  
+  .books-item .books-info {
+    text-align: center;
+  }
+  
+  .books-item .books-info h4 {
+    margin: 0.2rem 0;
+    font-size: 1em;
+    color: #333;
+  }
+  
+  .books-item:hover {
+    transform: scale(1.05);
+  }
+
+/*HouseholdeAppliances*/
+
+.search-div{
+    margin-left: 25rem;
+}
+
+.householdeAppliances-section input{
+    width: 20rem;
+    outline: none;
+    margin: 0.2rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.householdeAppliances-section button{
+    background-color: #a11f1f;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 6rem;
+}
+
+.householdeAppliances-section-up{
+    background-color: #f5f5f5;
+    background-size: cover; /* Cover the entire element */
+    background-position: center;
+    height: 30vh;
+    width: 100%;
+    color: black;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+.householdeAppliances-section-up img{
+    max-width: 100%;
+    width: 16%;
+    height: auto;
+    margin-top: 0.5rem;
+    margin-left: 1.5rem;
+    border-radius: 1rem;
+}
+
+.householdeAppliances-section-up h1{
+    color: #a11f1f;
+}
+
+.householdeAppliances-section-up h2{
+    color: #a47f7f;
+}
+
+.householdeAppliances-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    grid-auto-rows: minmax(10rem, auto);
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #fafafa;
+  }
+  
+  .householdeAppliances-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 0.9rem;
+    border: 0.1rem solid #ddd;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .householdeAppliances-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+  }
+  
+  .householdeAppliances-item .householdeAppliances-info {
+    text-align: center;
+  }
+  
+  .householdeAppliances-item .householdeAppliances-info h4 {
+    margin: 0.2rem 0;
+    font-size: 1em;
+    color: #333;
+  }
+  
+  .householdeAppliances-item:hover {
+    transform: scale(1.05);
+  }
+
+  /*Product details*/
+
+  .product-details {
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5rem;
+    margin-left: 4rem;
+}
+
+.product-details .product-info{
+  margin-top: 8rem;
+  margin-left: 8rem;
+}
+
+.product-details .product-info button{
+  margin-top: 6rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.8rem;
+  border: none;
+  background-color: #ef2d2d;
+  color: white;
+  cursor: pointer;
+}
+
+.product-details .product-info button:hover{
+  color: yellow;
+  transform: translate(0, -0.5rem);
+}
+
+
+
+
+.product-details img {
+    max-width: 100%;
+    padding: 0.5rem 0.5rem;
+    margin: 0.5rem 0.5rem;
+    border-radius: 1rem;
+    width: 35%;
+    background-color: #333;
+
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.product-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-link:hover {
+  text-decoration: none;
+  color: inherit; 
+}
+
+/*CategorySelector*/
+
+.category-selector {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.category-selector select {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid rgba(169, 8, 243, 0.564);
+}
+
+/*Admin Dashboard*/
+
+/* Sidebar */
+.sidebar {
+  width: 20%;
+  height: 100vh;
+  background-color: rgba(169, 8, 243, 0.564);
+  color: white;
+  padding: 1rem;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+}
+
+.sidebar h2 {
+  margin-bottom: 1rem;
+  margin-top: 4rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 7rem;
+}
+
+.sidebar ul li {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+}
+
+.sidebar ul li a:hover {
+  color: #072d56;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.content h1{
+  color: rgba(169, 8, 243, 0.564);
+}
+
+.content h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+/*AdminPage*/
+
+.admin-page{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.admin-page .content{
+  margin: 9rem;
+}
+
+/*Admin Clients*/
+
+.tableau-clients, .tableau-produits, .tableau-categories{
+  display: flex;
+  flex-direction: row;
+}
+
+.tableau-clients table, .tableau-produits table, .tableau-categories table{
+  margin-left: 1rem;
+  width: 90%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+
+table td {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table th {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  text-align: left;
+  background-color: rgba(169, 8, 243, 0.564);
+  color: white;
+}
+
+table button{
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: rgba(169, 8, 243, 0.564);
+  color: white;
+}
+
+.page-client .add-button{
+  padding: 0.5rem;
+  margin-left: 50%;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: rgba(169, 8, 243, 0.564);
+  color: white;
+}
+
+.page-produits .add-button{
+  padding: 0.5rem;
+  margin-left: 50%;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: rgba(169, 8, 243, 0.564);
+  color: white;
+}
+
+.page-categories .add-button{
+  padding: 0.5rem;
+  margin-left: 50%;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: rgba(169, 8, 243, 0.564);
+  color: white;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+}
+
+.modal h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.modal form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.modal form input[type="text"],
+.modal form input[type="email"],
+.modal form input[type="tel"],
+.modal form input[type="number"],
+.modal form textarea,
+.modal form select {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.modal form button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+}
+
+.modal form button[type="button"] {
+  background-color: #dc3545;
+}
+
+.modal form button:hover {
+  opacity: 0.8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    box-shadow: none;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .modal-content {
+    max-width: 100%;
+  }
+}
+
+
+
+
