@@ -10,28 +10,12 @@ Architecture of the app:
 
 # Table of content
 
-- [Code](#code)
-  - [Technologies](#technologies) 
-  - [Comment utiliser le code](#comment-utiliser-le-code)
-- [Dossier d'analyse](#dossier-danalyse)
-  - [Partie donnnées](#partie-donnnées)
-    - [Dictionnaire de donnnées](#dictionnaire-de-donnnées)
-    - [Règles de gestion](#règles-de-gestion)
-    - [MCD: Modèle Conceptuel de Données](#mcd-modèle-conceptuel-de-données)
-  - [Partie traitements](#partie-traitements)
-    - [Acteurs](#acteurs)
-    - [MCC: Modèle Conceptuel des Communications](#mcc-modèle-conceptuel-des-communications)
-    - [Traitement des stages](#traitement-des-stages)
-      - [GOE - stages: Graphe d’Ordonnancement des Evénements](#goe---stages-graphe-dordonnancement-des-evénements)
-      - [MCT - stages: Modèle Conceptuel des Traitements](#mct---stages-modèle-conceptuel-des-traitements)
-      - [MOT - stages: Modèle Organisationnel des Traitements](#mot---stages-modèle-organisationnel-des-traitements)
-    - [Traitement des inscriptions](#traitement-des-inscriptions)
-      - [GOE - inscriptions](#goe---inscriptions)
-      - [MCT - inscriptions](#mct---inscriptions)
-      - [MOT - inscriptions](#mot---inscriptions)
+- [Technologies](#technologies)
+- [Design](#design)
+- [Microservice design patterns](#microservice-design-patterns)
 - [Contributeurs](#contributeurs)
 
-## Technologies
+# Technologies
 
 **Framework:** Spring Boot <img alt="Spring" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" /> (
   Maven <img alt="Maven" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maven/maven-original.svg" />,
@@ -82,3 +66,8 @@ The service register acts as a centralized directory containing the location of 
 ## Distributed tracing
 
 ## Message queues
+
+# Contributeurs
+
+- [@Cristal32](https://github.com/Cristal32)
+- [@fatibr19](https://github.com/fatibr19)
