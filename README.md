@@ -19,7 +19,7 @@ Architecture of the app:
     - [Distributed tracing](#distributed-tracing)
     - [Communication between services](#communication-between-services)
 - [Results](#results)
-- [Contributeurs](#contributeurs)
+- [Contributors](#contributors)
 
 # Technologies
 
@@ -30,6 +30,8 @@ Architecture of the app:
 **Server:** Apache web server <img alt="Apache" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apache/apache-original.svg" />
 
 **Database:** PostgreSQL <img alt="PostgreSQL" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" />
+
+**Containerization:** Docker <img alt="Docker" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" />
 
 **HTTP Request tests:** Postman PostgreSQL <img alt="Postman" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg" />
 
@@ -130,7 +132,7 @@ Keep in mind, this was a small projects aimed mainly at understand the core prin
     <img src="assets/interface_catalogue_produits.png" alt="Catalogue page"/>
 </p>
 
-# Contributeurs
+# Contributors
 
 - [@Cristal32](https://github.com/Cristal32)
 - [@fatibr19](https://github.com/fatibr19)
