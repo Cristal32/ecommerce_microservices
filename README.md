@@ -51,7 +51,6 @@ Each microservice is a module in the project. How to create modules in Eclipse:
 - Right-click the project > New > Other > Maven Module
 - Check on the box for 'Create a simple project(skip archetype selection)'
 - Module name: name of your microservice > Finish
-- 
 
 # Microservice design patterns
 
