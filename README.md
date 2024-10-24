@@ -45,6 +45,14 @@ From an initial class diagram, we divided our app into different services:
     <img src="assets/diag_class_decomposition.png" alt="Class diagram"/>
 </p>
 
+## Multi Module
+
+Each microservice is a module in the project. How to create modules in Eclipse:
+- Right-click the project > New > Other > Maven Module
+- Check on the box for 'Create a simple project(skip archetype selection)'
+- Module name: name of your microservice > Finish
+- 
+
 # Microservice design patterns
 
 ## Database Per Service
